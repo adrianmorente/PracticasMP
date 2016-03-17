@@ -1,6 +1,6 @@
 #include <iostream>
 #include "bloqueLed.h"
-adrian
+
 using namespace std;
 
 int main()
