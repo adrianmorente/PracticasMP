@@ -1,4 +1,6 @@
 #include <bloqueLed.h>
+#include <iostream>
+using namespace std;
 
 /**
 @brief enciende el LED @p pos del @c bloqueLed @p b
@@ -62,7 +64,7 @@ string bloqueLedToString(bloqueLed b){
 	bool aux;
 	for(int i=7; i>=0; i--){
 		aux = get(b, i);
-		res + aux;
+		res += aux;
 	}
 	return res;
 }
@@ -126,5 +128,3 @@ void encendidos(bloqueLed b, int posic[], int &cuantos){
 		}
 	}
 }
-
-#endif

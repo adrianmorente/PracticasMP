@@ -1,6 +1,5 @@
 #include <iostream>
 #include "bloqueLed.h"
-
 using namespace std;
 
 int main()
@@ -41,7 +40,7 @@ int main()
     apagar(b);
     cout << bloqueLedToString(b)<< endl;
 
-    cout << "\nAhora la animacion\\nEjemplo 1 \n";
+    cout << "\nAhora la animacion\nEjemplo 1 \n";
 
 
     cout << "\nAhora la animacion\nEjemplo 2 \n";
