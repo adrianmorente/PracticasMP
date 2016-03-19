@@ -118,7 +118,13 @@ void volcar(bloqueLed b, bool v[]){
 @param cuantos número de LEDs encendidos en @p b (número de elementos usados en el vector @p posic)
 */
 void encendidos(bloqueLed b, int posic[], int &cuantos){
-
+	cuantos=0;
+	for(int i=0; i<8; i++){
+		if(get(b, i)){
+			posic[cuantos] = i;
+			cuantos++;
+		}
+	}
 }
 
 #endif
