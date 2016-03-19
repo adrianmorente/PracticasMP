@@ -52,7 +52,7 @@ bool get(bloqueLed b, int pos){
 @brief devuelve un string conteniendo una secuencia de '0's y '1's correspondiente  al estado de cada LED
 @param b el @c bloqueLed que se quiere imprimir
 
-Por ejemplo, si en el @c bloqueLed @c b están encendidos los LEDs en posiciones 1 y 3 (0 más a la derecha), 
+Por ejemplo, si en el @c bloqueLed @c b están encendidos los LEDs en posiciones 1 y 3 (0 más a la derecha),
 @c bloqueLedToString(b); devolverá el string @c "00001010"
 
 */
@@ -88,7 +88,7 @@ void apagar(bloqueLed &b){
 @param b el @c bloqueLed sobre el que se quiere actuar
 @param v vector de 8 elementos que contiene la secuencia de LEDS que se quieren asignar
 
-Asigna a @p b la configuración de LEDs contenida en @p v. @p v es un vector de 8 booleanos 
+Asigna a @p b la configuración de LEDs contenida en @p v. @p v es un vector de 8 booleanos
 donde @c true significa encendido y @c false significa apagado.
 */
 void asignar(bloqueLed &b, const bool v[]){
@@ -107,7 +107,8 @@ void asignar(bloqueLed &b, const bool v[]){
 Vuelca en @p v la configuración de LEDs contenida en @p b. @c true significa encendido y @c false significa apagado. El tamaño de @p v debe ser 8.
 */
 void volcar(bloqueLed b, bool v[]){
-	
+	for(int i=0; i<8; i++)
+		v[i] = get(b, i);
 }
 
 /**
@@ -116,7 +117,8 @@ void volcar(bloqueLed b, bool v[]){
 @param posic vector de enteros (valores entre 0 a 7) que indican la posición de los LEDs de @p b que están encendidos
 @param cuantos número de LEDs encendidos en @p b (número de elementos usados en el vector @p posic)
 */
-void encendidos(bloqueLed b, int posic[], int &cuantos);
+void encendidos(bloqueLed b, int posic[], int &cuantos){
+
+}
 
 #endif
-
