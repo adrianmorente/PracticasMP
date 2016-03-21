@@ -11,7 +11,7 @@ int main()
 
     apagar(b);
     cout << "\nBloque apagado LEDs: ";
-    cout << bloqueLedToString(b)<< endl;
+    cout << bloqueLedToString(b) << endl;
 
 
     cout << "\nInicializo el bloque a partir de un vector de bool ";

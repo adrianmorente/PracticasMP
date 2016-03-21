@@ -9,8 +9,7 @@ using namespace std;
 */
 void on(bloqueLed &b, int pos){
 	bloqueLed mask;
-	if((pos>=0)&& (pos<0)){
-		//generar máscara
+	if((pos>=0) && (pos<8)){
 		mask = 0x1 << pos;
 		b = b | mask;
 	}
@@ -23,11 +22,9 @@ void on(bloqueLed &b, int pos){
 */
 void off(bloqueLed &b, int pos){
 	bloqueLed mask;
-	if((pos>=0)&& (pos<0)){
+	if((pos>=0) && (pos<8)){
 		mask = 0x1 << pos;
-		//Invertir LEDS
 		mask =~ mask;
-		//AND
 		b = b & mask;
 	}
 }
@@ -64,7 +61,10 @@ string bloqueLedToString(bloqueLed b){
 	bool aux;
 	for(int i=7; i>=0; i--){
 		aux = get(b, i);
-		res += aux;
+		if(aux==true)
+			res += "1";
+		else
+			res += "0";
 	}
 	return res;
 }
