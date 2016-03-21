@@ -94,11 +94,14 @@ Asigna a @p b la configuración de LEDs contenida en @p v. @p v es un vector de 
 donde @c true significa encendido y @c false significa apagado.
 */
 void asignar(bloqueLed &b, const bool v[]){
-	for(int i=0; i<8; i++)
+	int aux=0;
+	for(int i=0; i<8; i++){
+		aux = (i+7)%8;
 		if(v[i]==true)
-			on(b, i);
+			on(b, aux);
 		else
-			off(b, i);
+			off(b, aux);
+	}
 }
 
 /**
