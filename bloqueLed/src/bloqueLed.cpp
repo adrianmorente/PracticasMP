@@ -53,9 +53,7 @@ bool get(bloqueLed b, int pos){
 
 Por ejemplo, si en el @c bloqueLed @c b están encendidos los LEDs en posiciones 1 y 3 (0 más a la derecha),
 @c bloqueLedToString(b); devolverá el string @c "00001010"
-
 */
-
 string bloqueLedToString(bloqueLed b){
 	string res;
 	bool aux;
@@ -94,13 +92,14 @@ Asigna a @p b la configuración de LEDs contenida en @p v. @p v es un vector de 
 donde @c true significa encendido y @c false significa apagado.
 */
 void asignar(bloqueLed &b, const bool v[]){
-	int aux=0;
-	for(int i=0; i<8; i++){
-		aux = (i+7)%8;
+	int i, j;
+	//Si i=0, j=7; si i=1, j=6...
+	//El orden de los numeros en v[] va al reves que en el bloque LED
+	for(i=0, j=7; i<7; i++, j--){
 		if(v[i]==true)
-			on(b, aux);
+			on(b, j);
 		else
-			off(b, aux);
+			off(b, j);
 	}
 }
 
