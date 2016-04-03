@@ -47,4 +47,4 @@ clean:
 	rm -f $(OBJ)/*.o
 
 mrproper: clean
-	rm $(BIN)/*
+	rm -f $(BIN)/*
