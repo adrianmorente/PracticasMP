@@ -21,6 +21,10 @@ private:
 public:
 /// Construye una imagen vacía (0 filas, 0 columnas)
    Imagen(); 
+
+   Imagen plano(int k);
+
+   bool aArteASCII(const char grises[], char aArteASCII[],int maxlong);
    
 
 /**

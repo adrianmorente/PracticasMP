@@ -1,6 +1,8 @@
 //lee imagenes/gio.pgm y la convierte en ascii con los caracteres "@%#*+=-:. "
-#include<iostream>
-#include<imagen.h>
+#include <iostream>
+#include <imagen.h>
+#include "byte.h"
+#include "pgm.h"
 
 using namespace std;
 
