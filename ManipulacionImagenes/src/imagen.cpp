@@ -5,7 +5,7 @@ using namespace std;
 
 
 /// Construye una imagen vacia (0 filas, 0 columnas)
-Imagen(){
+Imagen::Imagen(){
   nfilas=0;
   ncolumnas=0;
 }
@@ -18,7 +18,7 @@ Imagen(){
 Construye una imagen de tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
-Imagen(int filas, int columnas){
+Imagen::Imagen(int filas, int columnas){
   nfilas=filas;
   ncolumnas=columnas;
   for(int i=0; i<(filas*columnas-1); i++){

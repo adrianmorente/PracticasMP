@@ -1,6 +1,6 @@
 /**
-  * @file 
-  * @brief Fichero con las definiciones para la E/S de imágenes PGM 
+  * @file
+  * @brief Fichero con las definiciones para la E/S de imágenes PGM
   *
   * Permite la E/S de archivos de tipos PGM
   *
@@ -12,7 +12,7 @@
 using namespace std;
 
 
-TipoImagen LeerTipo(ifstream& f)
+TipoImagen pgm::LeerTipo(ifstream& f)
 {
   char c1,c2;
   TipoImagen res= IMG_DESCONOCIDO;
@@ -32,7 +32,7 @@ TipoImagen LeerTipo(ifstream& f)
 
 // _____________________________________________________________________________
 
-char SaltarSeparadores (ifstream& f)
+char pgm::SaltarSeparadores (ifstream& f)
 {
   char c;
   do {
@@ -44,7 +44,7 @@ char SaltarSeparadores (ifstream& f)
 
 // _____________________________________________________________________________
 
-bool LeerCabecera (ifstream& f, int& filas, int& columnas)
+bool pgm::LeerCabecera (ifstream& f, int& filas, int& columnas)
 {
     int maxvalor;
 
@@ -52,7 +52,7 @@ bool LeerCabecera (ifstream& f, int& filas, int& columnas)
       f.ignore(10000,'\n');
 
     f >> columnas >> filas >> maxvalor;
-    
+
     if (/*str &&*/ f && filas>0 && filas <5000 && columnas >0 && columnas<5000) {
         f.get(); // Saltamos separador
         return true;
@@ -62,7 +62,7 @@ bool LeerCabecera (ifstream& f, int& filas, int& columnas)
 
 // _____________________________________________________________________________
 
-TipoImagen infoPGM(const char nombre[], int& filas, int& columnas)
+TipoImagen pgm::infoPGM(const char nombre[], int& filas, int& columnas)
 {
   TipoImagen tipo;
   filas=columnas=0;
@@ -79,28 +79,28 @@ TipoImagen infoPGM(const char nombre[], int& filas, int& columnas)
 
 // _____________________________________________________________________________
 
-bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int& columnas)
+bool pgm::leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int& columnas)
 {
   bool exito= false;
   filas=0;
   columnas=0;
   ifstream f(nombre);
-  
+
   if (LeerTipo(f)==IMG_PGM_BINARIO)
     if (LeerCabecera (f, filas, columnas))
 	if (f.read(reinterpret_cast<char *>(datos),filas*columnas))
 	  exito= true;
-  
+
   return exito;
 }
 
 // _____________________________________________________________________________
 
-bool escribirPGMBinario (const char nombre[], const unsigned char datos[], int filas, int columnas)
+bool pgm::escribirPGMBinario (const char nombre[], const unsigned char datos[], int filas, int columnas)
 {
   ofstream f(nombre);
   bool res= true;
-  
+
   if (f) {
     f << "P5" << endl;
     f << columnas << ' ' << filas << endl;
@@ -110,4 +110,3 @@ bool escribirPGMBinario (const char nombre[], const unsigned char datos[], int f
   }
   return res;
 }
-
