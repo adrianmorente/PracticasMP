@@ -6,7 +6,7 @@ using namespace std;
 
 
 /// Construye una imagen vacia (0 filas, 0 columnas)
-Imagen::Imagen(){
+Imagen(){
   nfilas=0;
   ncolumnas=0;
 }
@@ -19,7 +19,7 @@ Imagen::Imagen(){
 Construye una imagen de tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
-Imagen::Imagen(int filas, int columnas){
+Imagen(int filas, int columnas){
   nfilas=filas;
   ncolumnas=columnas;
   for(int i=0; i<(filas*columnas-1); i++){
@@ -35,7 +35,7 @@ Imagen::Imagen(int filas, int columnas){
 Dimensiona la imagen a tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
-void Imagen::crear(int filas, int columnas){
+void crear(int filas, int columnas){
   Imagen(filas, columnas);
 }
 
@@ -44,7 +44,7 @@ void Imagen::crear(int filas, int columnas){
 @brief Devuelve el número de filas de las imagen
 @return el número de filas de la imagen
 */
-int Imagen::filas(){
+int filas(){
   return nfilas;
 }
 
@@ -53,7 +53,7 @@ int Imagen::filas(){
 @brief Devuelve el número de columnas de las imagen
 @return el número de columnas de la imagen
 */
-int Imagen::columnas(){
+int columnas(){
   return ncolumnas;
 }
 
@@ -67,7 +67,7 @@ Asigna el valor @a v a la posición (@a x,@a y) de la imagen. Dado que la imagen
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
 */
-void Imagen::set(int y, int x, byte v){
+void set(int y, int x, byte v){
   int pos = y*ncolumnas + x;
   datos[pos] = v;
 }
@@ -82,7 +82,7 @@ Devuelve el valor de la posición (@a x,@a y) de la imagen. Dado que la imagen s
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
 */
-byte Imagen::get(int y, int x){
+byte get(int y, int x){
   int pos = y*ncolumnas + x;
   return datos[pos];
 }
@@ -96,7 +96,7 @@ Asigna el valor @a v a la posición @a i de la imagen considerada como vector. L
 corresponde con la posición @c y * @c ncolumnas + @c x de la imagen donde @c y representa la
 fila y @c x representa la columna.
 */
-void Imagen::setPos(int i, byte v){
+void setPos(int i, byte v){
   datos[i] = v;
 }
 
@@ -108,7 +108,7 @@ Devuelve el valor de la posición @a i de la imagen considerada como vector. La 
 corresponde con la posición @c y * @c ncolumnas + @c x de la imagen donde @c y representa la
 fila y @c x representa la columna.
 */
-byte Imagen::getPos(int i){
+byte getPos(int i){
   return datos[i];
 }
 
@@ -120,7 +120,7 @@ byte Imagen::getPos(int i){
 @retval false 	si se ha producido algún error en la lectura
 Lee desde disco los datos de la imagen llamada @a nombreFichero y la guarda en la memoria. La función debe asegurarse de que la imagen es de un tipo de imagen conocido y de que su tamaño es menor del tamaño máximo permitido (@c MAXPIXELS).
 */
-bool Imagen::leerImagen(const char nombreFichero[]){
+bool leerImagen(const char nombreFichero[]){
   int fils, cols;
   bool res = false;
   if(infoPGM(nombreFichero, fils, cols) == IMG_PGM_BINARIO){
@@ -138,14 +138,14 @@ bool Imagen::leerImagen(const char nombreFichero[]){
 @retval true 	si ha tenido éxito en la escritura
 @retval false 	si se ha producido algún error en la escritura
 */
-bool Imagen::escribirImagen(const char nombreFichero[], bool esBinario){
+bool escribirImagen(const char nombreFichero[], bool esBinario){
   return escribirPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
 }
 
 
 
 //extraer plano k
-Imagen Imagen::plano(int k){
+Imagen plano(int k){
   Imagen plano (nfilas,ncolumnas);
   for (int i = 0; i < filas()*columnas(); ++i){
     if (getbit(getPos(i),k)){
@@ -161,7 +161,7 @@ Imagen Imagen::plano(int k){
 
 
 //convertir a arte ASCII
-bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
+bool aArteASCII(const char grises[], char aArteASCII[],int maxlong){
   int cardinal = strlen(grises);
   int contador_char=0;
 
@@ -182,7 +182,7 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
 
 
-void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
+void insertarplano(Imagen info, int planoinfo, int planosalida){
   for (int i = 0; i < filas()*columnas(); ++i)
   {
     byte b = getPos(i);
