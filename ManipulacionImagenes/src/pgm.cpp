@@ -12,7 +12,7 @@
 using namespace std;
 
 
-TipoImagen pgm::LeerTipo(ifstream& f)
+TipoImagen LeerTipo(ifstream& f)
 {
   char c1,c2;
   TipoImagen res= IMG_DESCONOCIDO;
@@ -32,7 +32,7 @@ TipoImagen pgm::LeerTipo(ifstream& f)
 
 // _____________________________________________________________________________
 
-char pgm::SaltarSeparadores (ifstream& f)
+char SaltarSeparadores (ifstream& f)
 {
   char c;
   do {
@@ -44,7 +44,7 @@ char pgm::SaltarSeparadores (ifstream& f)
 
 // _____________________________________________________________________________
 
-bool pgm::LeerCabecera (ifstream& f, int& filas, int& columnas)
+bool LeerCabecera (ifstream& f, int& filas, int& columnas)
 {
     int maxvalor;
 
@@ -62,7 +62,7 @@ bool pgm::LeerCabecera (ifstream& f, int& filas, int& columnas)
 
 // _____________________________________________________________________________
 
-TipoImagen pgm::infoPGM(const char nombre[], int& filas, int& columnas)
+TipoImagen infoPGM(const char nombre[], int& filas, int& columnas)
 {
   TipoImagen tipo;
   filas=columnas=0;
@@ -79,7 +79,7 @@ TipoImagen pgm::infoPGM(const char nombre[], int& filas, int& columnas)
 
 // _____________________________________________________________________________
 
-bool pgm::leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int& columnas)
+bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int& columnas)
 {
   bool exito= false;
   filas=0;
@@ -96,7 +96,7 @@ bool pgm::leerPGMBinario (const char nombre[], unsigned char datos[], int& filas
 
 // _____________________________________________________________________________
 
-bool pgm::escribirPGMBinario (const char nombre[], const unsigned char datos[], int filas, int columnas)
+bool escribirPGMBinario (const char nombre[], const unsigned char datos[], int filas, int columnas)
 {
   ofstream f(nombre);
   bool res= true;

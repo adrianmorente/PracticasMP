@@ -3,7 +3,6 @@
 #include "imagen.h"
 #include "byte.h"
 #include "pgm.h"
-
 using namespace std;
 
 int main(){
@@ -23,11 +22,11 @@ int main(){
     if(origen.aArteASCII(grises, arteASCII, 4500))
         cout << arteASCII;
     else
-        cout << "La conversi�n no ha sido posible" << endl;
+        cout << "La conversion no ha sido posible" << endl;
 
     cout << "Ahora Forzamos que no quepa. Debe aparecer un mensaje de error\n";
     if(origen.aArteASCII(grises, arteASCII, 4199))
         cout << arteASCII;
     else
-        cout << "La conversi�n no ha sido posible" << endl;
+        cout << "La conversion no ha sido posible" << endl;
 }

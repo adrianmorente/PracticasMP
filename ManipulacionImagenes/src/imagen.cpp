@@ -81,7 +81,8 @@ void Imagen::set(int y, int x, byte v){
 Devuelve el valor de la posición (@a x,@a y) de la imagen. Dado que la imagen se guarda
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
-get(int y, int x){
+*/
+byte Imagen::get(int y, int x){
   int pos = y*ncolumnas + x;
   return datos[pos];
 }
@@ -159,7 +160,7 @@ Imagen Imagen::plano(int k){
 
 
 
-//convertir arte ASCII
+//convertir a arte ASCII
 bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
   int cardinal = strlen(grises);
   int contador_char=0;
@@ -184,11 +185,10 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 }
 
 
-/*
+
 void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
   for (int i = 0; i < filas()*columnas(); ++i)
   {
     byte b = getPos(i);
   }
 }
-*/
