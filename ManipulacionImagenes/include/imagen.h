@@ -6,6 +6,10 @@
 #ifndef _IMAGEN_H_
 #define _IMAGEN_H_
 
+#include <iostream>
+#include "byte.h"
+#include "pgm.h"
+using namespace std;
 
 
 typedef unsigned char byte; ///< byte = 8bits almacenado en un unsigned char

@@ -29,4 +29,6 @@ int main(){
         cout << arteASCII;
     else
         cout << "La conversion no ha sido posible" << endl;
+
+    return 0;
 }

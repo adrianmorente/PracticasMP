@@ -6,10 +6,10 @@ BIN = bin
 LIB = lib
 
 CXX = g++
-CPPFLAGS = -Wall -g -c -I$(INC)
+CPPFLAGS = -Wall -g -c -I$(INC) -std=c++11
 
 
-all: $(BIN)/arteASCII $(BIN)/testarteASCII $(BIN)/testplano $(BIN)/testimagen
+all: $(BIN)/testarteASCII $(BIN)/arteASCII $(BIN)/testplano $(BIN)/testimagen
 
 $(BIN):
 	mkdir -p $(BIN)
@@ -18,28 +18,28 @@ $(OBJ):
 	mkdir -p $(OBJ)
 
 $(BIN)/testarteASCII: $(OBJ)/testarteASCII.o
-	g++ -o $(BIN)/testarteASCII $(OBJ)/testarteASCII.o
+	$(CXX) -o $(BIN)/testarteASCII $(OBJ)/testarteASCII.o
 
 $(OBJ)/testarteASCII.o: $(SRC)/testarteASCII.cpp
-	g++ -c $(SRC)/testarteASCII.cpp -o $(OBJ)/testarteASCII.o -Iinclude/
+	$(CXX) $(CPPFLAGS) $(SRC)/testarteASCII.cpp -o $(OBJ)/testarteASCII.o
 
-$(BIN)/testplano: $(SRC)/testplano.o
-	g++ -o $(BIN)/testplano $(OBJ)/testplano.o
+$(BIN)/testplano: $(OBJ)/testplano.o
+	$(CXX) -o $(BIN)/testplano $(OBJ)/testplano.o
 
 $(OBJ)/testplano.o: $(SRC)/testplano.cpp
-	g++ -c $(SRC)/testplano.cpp -o $(OBJ)/testplano.o -Iinclude/
+	$(CXX) $(CPPFLAGS) $(SRC)/testplano.cpp -o $(OBJ)/testplano.o
 
 $(BIN)/arteASCII: $(OBJ)/arteASCII.o
-	g++ -o $(BIN)/arteASCII $(OBJ)/arteASCII.o
+	$(CXX) -o $(BIN)/arteASCII $(OBJ)/arteASCII.o
 
 $(OBJ)/arteASCII.o: $(SRC)/arteASCII.cpp
-	g++ -c $(SRC)/arteASCII.cpp -o $(OBJ)/arteASCII.o -Iinclude/
+	$(CXX) $(CPPFLAGS) $(SRC)/arteASCII.cpp -o $(OBJ)/arteASCII.o
 
 $(BIN)/testimagen: $(OBJ)/testimagen.o
-	g++ -o $(BIN)/testimagen $(OBJ)/testimagen.o
+	$(CXX) -o $(BIN)/testimagen $(OBJ)/testimagen.o
 
 $(OBJ)/testimagen.o: $(SRC)/testimagen.cpp
-	g++ -c $(SRC)/testimagen.cpp -o $(OBJ)/testimagen.o -Iinclude/
+	$(CXX) $(CPPFLAGS) $(SRC)/testimagen.cpp -o $(OBJ)/testimagen.o
 
 # ************ documentación *******
 
