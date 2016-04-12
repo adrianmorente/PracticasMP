@@ -6,6 +6,7 @@
 #ifndef _IMAGEN_H_
 #define _IMAGEN_H_
 
+#include "imagen.cpp"
 
 typedef unsigned char byte; ///< byte = 8bits almacenado en un unsigned char
 
@@ -132,7 +133,5 @@ Lee desde disco los datos de la imagen llamada @a nombreFichero y la guarda en l
 */
    bool escribirImagen(const char nombreFichero[], bool esBinario);
 };
-
-#include "imagen.cpp"
 
 #endif

@@ -29,6 +29,12 @@ $(BIN)/testplano: $(SRC)/testplano.o
 $(OBJ)/testplano.o: $(SRC)/testplano.cpp
 	g++ -c $(SRC)/testplano.cpp -o $(OBJ)/testplano.o -Iinclude/
 
+$(BIN)/arteASCII: $(OBJ)/arteASCII.o
+	g++ -o $(BIN)/arteASCII $(OBJ)/arteASCII.o
+
+$(OBJ)/arteASCII.o: $(SRC)/arteASCII.cpp
+	g++ -c $(SRC)/arteASCII.cpp -o $(OBJ)/arteASCII.o -Iinclude/
+
 $(BIN)/testimagen: $(OBJ)/testimagen.o
 	g++ -o $(BIN)/testimagen $(OBJ)/testimagen.o
 

@@ -1,8 +1,9 @@
-// Lee la imagen imagenes/giotexto.pgm y extrae el plano 6 en plano6.pgm y el 
+// Lee la imagen imagenes/giotexto.pgm y extrae el plano 6 en plano6.pgm y el
 // plano 0 en plano.pgm
-#include<iostream>
-#include<imagen.h>
-
+#include <iostream>
+#include "pgm.h"
+#include "imagen.h"
+#include "byte.h"
 using namespace std;
 
 int main(){
@@ -14,9 +15,9 @@ int main(){
 		cerr << "error leyendo imagenes/giotexto.pgm\n";
 		return 1;
 	}
-	
+
 	plano = origen.plano(6);
-  	
+
 	// Guardar la imagen plano en el fichero plano6.pgm
 	if (plano.escribirImagen("plano6.pgm", true)){
 		// si todo va bien
@@ -25,10 +26,10 @@ int main(){
 	} else { // si error
 		cerr << "Error guardando la imagen plano6.pgm\n";
 		return 1;
-	}	
-	
+	}
+
 	plano = origen.plano(0);
-	
+
 	// Guardar la imagen plano en el fichero plano0.pgm
 	if (plano.escribirImagen("plano0.pgm", true)){
 		// si todo va bien
@@ -37,7 +38,7 @@ int main(){
 	} else { // si error
 		cerr << "Error guardando la imagen plano0.pgm\n";
 		return 1;
-	}	
+	}
 
 	return 0;
 }

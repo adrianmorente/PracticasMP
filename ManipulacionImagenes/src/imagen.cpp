@@ -1,5 +1,6 @@
 #include "pgm.h"
 #include "imagen.h"
+#include "byte.h"
 #include <iostream>
 using namespace std;
 
