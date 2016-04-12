@@ -128,15 +128,17 @@ Lee desde disco los datos de la imagen llamada @a nombreFichero y la guarda en l
 @retval false 	si se ha producido algún error en la escritura
 */
    bool escribirImagen(const char nombreFichero[], bool esBinario);
-};
+
 
 //Extraer plano k-esimo de la imagen
-Imagen plano(int k);
+    Imagen plano(int k);
 
 //Convertir imagen a arte ASCII
-bool aArteASCII(const char grises[], char aArteASCII[],int maxlong);
+    bool aArteASCII(const char grises[], char aArteASCII[],int maxlong);
 
 //Insertar plano en imagen
-void insertarplano(Imagen info, int planoinfo, int planosalida);
+    void insertarplano(Imagen info, int planoinfo, int planosalida);
+
+};
 
 #endif
