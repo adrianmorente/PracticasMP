@@ -9,7 +9,7 @@ using namespace std;
 @param b 	el @c byte cuyo bit se quiere activar
 @param pos 	el bit dentro de @p b que se quiere activar (0 más a la derecha)
 */
-void on(byte &b, int pos){
+void byte::on(byte &b, int pos){
 	byte mask;
 	if((pos>=0) && (pos<8)){
 		mask = 0x1 << pos;
@@ -22,7 +22,7 @@ void on(byte &b, int pos){
 @param b 	el @c byte cuyo bit se quiere desactivar
 @param pos 	el bit dentro de @p b que se quiere desactivar (0 más a la derecha)
 */
-void off(byte &b, int pos){
+void byte::off(byte &b, int pos){
 	byte mask;
 	if((pos>=0) && (pos<8)){
 		mask = 0x1 << pos;
@@ -38,7 +38,7 @@ void off(byte &b, int pos){
 @retval true 	si el bit en la posición @p pos está encendido
 @retval false	si el bit en la posición @p pos está apagado
 */
-bool getbit(byte b, int pos){
+bool byte::getbit(byte b, int pos){
 	byte mask;
 	mask = 0x1 << pos;
 	mask = b & mask;
@@ -56,7 +56,7 @@ bool getbit(byte b, int pos){
 Por ejemplo, si en el @c byte @c b están encendidos los bits en posiciones 1 y 3 (0 más a la derecha),
 @c byteToString(b); devolverá el string @c "00001010"
 */
-string byteToString(byte b){
+string byte::byteToString(byte b){
 	string res;
 	bool aux;
 	for(int i=7; i>=0; i--){
@@ -73,7 +73,7 @@ string byteToString(byte b){
 @brief enciende todos los bits
 @param b el @c byte que se quiere encender completamente.
 */
-void encender(byte &b){
+void byte::encender(byte &b){
 	b = 0xFF;
 }
 
@@ -81,7 +81,7 @@ void encender(byte &b){
 @brief apaga todos los bits
 @param b el @c byte que se quiere apagar completamente.
 */
-void apagar(byte &b){
+void byte::apagar(byte &b){
 	b = 0x0;
 }
 
@@ -93,7 +93,7 @@ void apagar(byte &b){
 Asigna a @p b la configuración de bits contenida en @p v. @p v es un vector de 8 booleanos
 donde @c true significa encendido y @c false significa apagado.
 */
-void asignar(byte &b, const bool v[]){
+void byte::asignar(byte &b, const bool v[]){
 	int i, j;
 	//Si i=0, j=7; si i=1, j=6...
 	//El orden de los numeros en v[] va al reves que en el bloque bit
@@ -112,7 +112,7 @@ void asignar(byte &b, const bool v[]){
 
 Vuelca en @p v la configuración de bits contenida en @p b. @c true significa encendido y @c false significa apagado. El tamaño de @p v debe ser 8.
 */
-void volcar(byte b, bool v[]){
+void byte::volcar(byte b, bool v[]){
 	for(int i=0; i<8; i++)
 		v[i] = get(b, i);
 }
@@ -123,7 +123,7 @@ void volcar(byte b, bool v[]){
 @param posic vector de enteros (valores entre 0 a 7) que indican la posición de los bits de @p b que están encendidos
 @param cuantos número de bits encendidos en @p b (número de elementos usados en el vector @p posic)
 */
-void encendidos(byte b, int posic[], int &cuantos){
+void byte::encendidos(byte b, int posic[], int &cuantos){
 	cuantos=0;
 	for(int i=0; i<8; i++){
 		if(get(b, i)){

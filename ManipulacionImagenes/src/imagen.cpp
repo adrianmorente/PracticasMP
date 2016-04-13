@@ -2,11 +2,13 @@
 #include "imagen.h"
 #include "byte.h"
 #include <iostream>
+#include <string.h>
+#include <stdio.h>
 using namespace std;
 
 
 /// Construye una imagen vacia (0 filas, 0 columnas)
-Imagen(){
+Imagen::Imagen(){
   nfilas=0;
   ncolumnas=0;
 }
@@ -19,7 +21,7 @@ Imagen(){
 Construye una imagen de tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
-Imagen(int filas, int columnas){
+Imagen::Imagen(int filas, int columnas){
   nfilas=filas;
   ncolumnas=columnas;
   for(int i=0; i<(filas*columnas-1); i++){
@@ -35,7 +37,7 @@ Imagen(int filas, int columnas){
 Dimensiona la imagen a tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
-void crear(int filas, int columnas){
+void Imagen::crear(int filas, int columnas){
   Imagen(filas, columnas);
 }
 
@@ -44,7 +46,7 @@ void crear(int filas, int columnas){
 @brief Devuelve el número de filas de las imagen
 @return el número de filas de la imagen
 */
-int filas(){
+int Imagen::filas(){
   return nfilas;
 }
 
@@ -53,7 +55,7 @@ int filas(){
 @brief Devuelve el número de columnas de las imagen
 @return el número de columnas de la imagen
 */
-int columnas(){
+int Imagen::columnas(){
   return ncolumnas;
 }
 
@@ -67,7 +69,7 @@ Asigna el valor @a v a la posición (@a x,@a y) de la imagen. Dado que la imagen
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
 */
-void set(int y, int x, byte v){
+void Imagen::set(int y, int x, byte v){
   int pos = y*ncolumnas + x;
   datos[pos] = v;
 }
@@ -82,7 +84,7 @@ Devuelve el valor de la posición (@a x,@a y) de la imagen. Dado que la imagen s
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
 */
-byte get(int y, int x){
+byte Imagen::get(int y, int x){
   int pos = y*ncolumnas + x;
   return datos[pos];
 }
@@ -145,7 +147,7 @@ bool Imagen::escribirImagen(const char nombreFichero[], bool esBinario){
 
 
 //extraer plano k
-Imagen plano(int k){
+Imagen Imagen::plano(int k){
   Imagen plano (nfilas,ncolumnas);
   for (int i = 0; i < filas()*columnas(); ++i){
     if (getbit(getPos(i),k)){
@@ -170,21 +172,22 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
   for (int i = 0; i < filas(); i++){
     for (int j = 0; j < columnas(); j++){
-      arteASCII[contador_char]=grises[(get(i,j)=cardinal)/256];
+      aArteASCII[contador_char]=grises[(get(i,j)=cardinal)/256];
       contador_char++;
     }
-    arteASCII[contador_char]='\n';
+    aArteASCII[contador_char]='\n';
     contador_char ++;
   }
-  arteASCII[contador_char] = '\0';
+  aArteASCII[contador_char] = '\0';
   return true;
 }
 
 
 
 void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
-  for (int i = 0; i < filas()*columnas(); ++i)
-  {
-    byte b = getPos(i);
-  }
+  // for (int i = 0; i < filas()*columnas(); ++i)
+  // {
+  //   byte b = getPos(i);
+  // }
+  //esto hay que implementarlo
 }
