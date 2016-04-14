@@ -9,7 +9,7 @@ CXX = g++
 CPPFLAGS = -Wall -g -c -I$(INC)
 
 
-all: $(BIN)/testimagen $(BIN)/testplano $(BIN)/arteASCII $(BIN)/testarteASCII
+all: $(OBJ) $(BIN) $(BIN)/testimagen $(BIN)/testplano $(BIN)/arteASCII $(BIN)/testarteASCII
 
 $(BIN):
 	mkdir -p $(BIN)
