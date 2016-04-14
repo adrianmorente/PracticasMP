@@ -1,6 +1,6 @@
 /**
-  * @file 
-  * @brief Fichero con las definiciones para la E/S de imágenes PGM 
+  * @file
+  * @brief Fichero con las definiciones para la E/S de imágenes PGM
   *
   * Permite la E/S de archivos de tipos PGM
   *
@@ -52,7 +52,7 @@ bool LeerCabecera (ifstream& f, int& filas, int& columnas)
       f.ignore(10000,'\n');
 
     f >> columnas >> filas >> maxvalor;
-    
+
     if (/*str &&*/ f && filas>0 && filas <5000 && columnas >0 && columnas<5000) {
         f.get(); // Saltamos separador
         return true;
@@ -85,12 +85,12 @@ bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int
   filas=0;
   columnas=0;
   ifstream f(nombre);
-  
+
   if (LeerTipo(f)==IMG_PGM_BINARIO)
     if (LeerCabecera (f, filas, columnas))
 	if (f.read(reinterpret_cast<char *>(datos),filas*columnas))
 	  exito= true;
-  
+
   return exito;
 }
 
@@ -100,7 +100,7 @@ bool escribirPGMBinario (const char nombre[], const unsigned char datos[], int f
 {
   ofstream f(nombre);
   bool res= true;
-  
+
   if (f) {
     f << "P5" << endl;
     f << columnas << ' ' << filas << endl;
@@ -110,4 +110,3 @@ bool escribirPGMBinario (const char nombre[], const unsigned char datos[], int f
   }
   return res;
 }
-

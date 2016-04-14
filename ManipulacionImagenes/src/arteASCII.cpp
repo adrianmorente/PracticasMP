@@ -6,21 +6,38 @@
 using namespace std;
 
 int main(){
-    string nombre_imagen;
-    char c1, c2, c3, c4;
+    char nombre_imagen[65537];
+    char arteASCII[65537];
+    char grises[10];
+    int n_grises=-1;
+
+    Imagen origen;
 
     cout << "Introduce el nombre de la imagen de entrada: ";
     cin >> nombre_imagen;
 
     cout << "\nVamos con los caracteres usados para el arte ASCII (0-255)." << endl;
-    cout << "Introduce el caracter usado para los colores en (0-63): ";
-    cin >> c1;
-    cout << "Introduce el caracter usado para los colores en (64-127): ";
-    cin >> c2;
-    cout << "Introduce el caracter usado para los colores en (128-191): ";
-    cin >> c3;
-    cout << "Introduce el caracter usado para los colores en (192-255): ";
-    cin >> c4;
+    do{
+        cout << "Introduce el numero de caracteres distintos usados (>=4 && <=10): ";
+        cin >> n_grises;
+    }while(n_grises<0 || n_grises >10);
 
+    cout << "\nAhora introduce dichos caracteres (de uno en uno): ";
+    for(int i=0; i<n_grises; i++){
+        cout << "Caracter " << i << ": ";
+        cin >> grises[i];
+    }
 
+    if(!origen.leerImagen(nombre_imagen)){
+        cout << "Error leyendo imagen " << nombre_imagen << "...";
+        return 1;
+    }
+
+    cout << "\nLa imagen en arte ASCII es:\n";
+    if(origen.aArteASCII(grises, arteASCII, 65537))
+        cout << arteASCII;
+    else
+        cout << "La conversion no ha sido posible" << endl;
+
+    return 0;
 }
