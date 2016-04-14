@@ -63,3 +63,4 @@ clean:
 
 mrproper: clean
 	rm -f $(BIN)/*
+	rm -f *.pgm

@@ -170,7 +170,7 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
   for (int i = 0; i < filas(); i++){
     for (int j = 0; j < columnas(); j++){
-      aArteASCII[contador_char]=grises[(get(i,j)==cardinal)/256];
+      aArteASCII[contador_char]=grises[(get(i,j)*cardinal)/256];
       contador_char++;
     }
     aArteASCII[contador_char]='\n';
