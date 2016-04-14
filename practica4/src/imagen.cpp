@@ -124,12 +124,21 @@ Lee desde disco los datos de la imagen llamada @a nombreFichero y la guarda en l
 */
 bool Imagen::leerImagen(const char nombreFichero[]){
   int fils, cols;
-  bool res = false;
-  if(infoPGM(nombreFichero, fils, cols) == IMG_PGM_BINARIO){
+  //bool res = false;
+  TipoImg tipo = infoPGM(nombreFichero, fils, cols) == IMG_PGM_BINARIO);
+  if(tipo == IMG_PGM_BINARIO){
     if(fils*cols <= MAXPIXELS)
-      res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+      return = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+    else
+      return false;
   }
-  return res;
+  else
+    if (tipo == IMG_PGM_TEXTO)
+      if(fils*cols == MAXPIXELS)
+        return leerPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
+      else
+        return false;
+  //return res;
 }
 
 
@@ -141,7 +150,11 @@ bool Imagen::leerImagen(const char nombreFichero[]){
 @retval false 	si se ha producido algún error en la escritura
 */
 bool Imagen::escribirImagen(const char nombreFichero[], bool esBinario){
-  return escribirPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+  //return escribirPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+  is(esBinario)
+    return escribirPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+  else
+    return escribirPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
 }
 
 
