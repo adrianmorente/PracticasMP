@@ -6,8 +6,8 @@
 using namespace std;
 
 int main(){
-    char nombre_imagen[65537];
-    char arteASCII[65537];
+    char nombre_imagen[131072];
+    char arteASCII[131072];
     char grises[10];
     int n_grises=-1;
 
@@ -34,7 +34,7 @@ int main(){
     }
 
     cout << "\nLa imagen en arte ASCII es:\n";
-    if(origen.aArteASCII(grises, arteASCII, 65537))
+    if(origen.aArteASCII(grises, arteASCII, 131072))
         cout << arteASCII;
     else
         cout << "La conversion no ha sido posible" << endl;
