@@ -136,7 +136,7 @@ bool Imagen::leerImagen(const char nombreFichero[]){
   }
   else
     res = false;
-  return res;
+  return res; 
 }
 
 
