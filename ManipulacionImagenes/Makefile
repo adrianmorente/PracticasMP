@@ -6,7 +6,7 @@ BIN = bin
 LIB = lib
 
 CXX = g++
-CPPFLAGS = -Wall -g -c -I$(INC)
+CPPFLAGS = -Wall -g -c -std=c++11 -I$(INC)
 
 
 all: $(BIN)/testimagen $(BIN)/testplano $(BIN)/arteASCII $(BIN)/testarteASCII
@@ -17,16 +17,16 @@ $(BIN):
 $(OBJ):
 	mkdir -p $(OBJ)
 
-$(BIN)/testarteASCII: $(OBJ)/testarteASCII.o $(OBJ)/imagen.o
+$(BIN)/testarteASCII: $(OBJ)/testarteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
 	$(CXX) -o $(BIN)/testarteASCII $(OBJ)/testarteASCII.o $(OBJ)/imagen.o
 
-$(BIN)/arteASCII: $(OBJ)/arteASCII.o $(OBJ)/imagen.o
+$(BIN)/arteASCII: $(OBJ)/arteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
 	$(CXX) -o $(BIN)/arteASCII $(OBJ)/arteASCII.o $(OBJ)/imagen.o
 
-$(BIN)/testimagen: $(OBJ)/testimagen.o $(OBJ)/imagen.o
+$(BIN)/testimagen: $(OBJ)/testimagen.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
 	$(CXX) -o $(BIN)/testimagen $(OBJ)/testimagen.o $(OBJ)/imagen.o
 
-$(BIN)/testplano: $(OBJ)/testplano.o $(OBJ)/imagen.o
+$(BIN)/testplano: $(OBJ)/testplano.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
 	$(CXX) -o $(BIN)/testplano $(OBJ)/testplano.o $(OBJ)/imagen.o
 
 $(OBJ)/imagen.o: $(SRC)/imagen.cpp $(INC)/imagen.h

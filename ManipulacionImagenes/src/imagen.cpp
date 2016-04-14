@@ -164,21 +164,21 @@ Imagen Imagen::plano(int k){
 
 //convertir a arte ASCII
 bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
-  int cardinal = strlen(grises);
-  int contador_char=0;
-
-  if (filas()*(columnas()+1) > maxlong)
-    return false;
-
-  for (int i = 0; i < filas(); i++){
-    for (int j = 0; j < columnas(); j++){
-      aArteASCII[contador_char]=grises[(get(i,j)=cardinal)/256];
-      contador_char++;
-    }
-    aArteASCII[contador_char]='\n';
-    contador_char ++;
-  }
-  aArteASCII[contador_char] = '\0';
+  // int cardinal = strlen(grises);
+  // int contador_char=0;
+  //
+  // if (filas()*(columnas()+1) > maxlong)
+  //   return false;
+  //
+  // for (int i = 0; i < filas(); i++){
+  //   for (int j = 0; j < columnas(); j++){
+  //     aArteASCII[contador_char]=grises[(get(i,j)=cardinal)/256];
+  //     contador_char++;
+  //   }
+  //   aArteASCII[contador_char]='\n';
+  //   contador_char++;
+  // }
+  // aArteASCII[contador_char] = '\0';
   return true;
 }
 
