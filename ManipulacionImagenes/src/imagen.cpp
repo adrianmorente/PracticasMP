@@ -150,12 +150,10 @@ bool Imagen::escribirImagen(const char nombreFichero[], bool esBinario){
 Imagen Imagen::plano(int k){
   Imagen plano (nfilas,ncolumnas);
   for (int i = 0; i < filas()*columnas(); ++i){
-    if (getbit(getPos(i),k)){
+    if (getbit(getPos(i),k))
       plano.setPos(i,0x80);
-    }
-    else{
+    else
       plano.setPos(i,0);
-    }
   }
   return plano;
 }
@@ -164,21 +162,21 @@ Imagen Imagen::plano(int k){
 
 //convertir a arte ASCII
 bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
-  // int cardinal = strlen(grises);
-  // int contador_char=0;
-  //
-  // if (filas()*(columnas()+1) > maxlong)
-  //   return false;
-  //
-  // for (int i = 0; i < filas(); i++){
-  //   for (int j = 0; j < columnas(); j++){
-  //     aArteASCII[contador_char]=grises[(get(i,j)=cardinal)/256];
-  //     contador_char++;
-  //   }
-  //   aArteASCII[contador_char]='\n';
-  //   contador_char++;
-  // }
-  // aArteASCII[contador_char] = '\0';
+  int cardinal = strlen(grises);
+  int contador_char=0;
+
+  if (filas()*(columnas()+1) > maxlong)
+    return false;
+
+  for (int i = 0; i < filas(); i++){
+    for (int j = 0; j < columnas(); j++){
+      aArteASCII[contador_char]=grises[(get(i,j)==cardinal)/256];
+      contador_char++;
+    }
+    aArteASCII[contador_char]='\n';
+    contador_char++;
+  }
+  aArteASCII[contador_char] = '\0';
   return true;
 }
 
