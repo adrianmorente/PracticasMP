@@ -38,6 +38,7 @@ int main(){
         while(entrada){
             //entrada de datos
         }
+        entrada.close();
     }
     else{
         cerr << "Error de apertura del fichero...\n";
