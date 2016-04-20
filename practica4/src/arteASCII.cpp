@@ -15,36 +15,35 @@ void lee_linea(char c[], int tamano){
 int main(){
     char imagen[100000];
     char grises[100];
-    char salida[100000];
+    char img_salida[100000];
     ifstream entrada;
-
+    ofstream salida;
     Imagen origen;
 
-    cout << "imagen de entrada: ";
+    cout << "imagen de entrada (imagenes/<nombre>.pgm): ";
     cin >> imagen;
     cout << "fichero de cadenas: ";
     cin >> grises;
     cout << "fichero de salida: ";
-    cin >> salida;
+    cin >> img_salida;
 
-    // entrada.open(imagen);
-    // if(entrada){
-    //     entrada >> lee_linea(aux, 80);    //ignoramos la primera linea
-    //     entrada >> n_cadenas;
-    //     while(entrada){
-    //         //entrada de datos
-    //     }
-    //     entrada.close();
-    // }
-    // else{
-    //     cerr << "Error de apertura del fichero...\n";
-    // }
-    //
-    // cout << "\nLa imagen en arte ASCII es:\n";
-    // if(origen.aArteASCII(grises, arteASCII, 131072))
-    //     cout << arteASCII;
-    // else
-    //     cout << "La conversion no ha sido posible" << endl;
+    int n_cadenas; //numero de cadenas que hay en grises.txt
+    char aux[100];
+    entrada.open(imagen);
+    if(entrada){
+        entrada >> aux;    //ignoramos la primera linea
+        entrada >> n_cadenas;
+        if(!entrada){
+            cerr << "Error de lectura del fichero...\n";
+        }
+        while(entrada){
+            entrada >> imagen;
+        }
+        entrada.close();
+    }
+    else{
+        cerr << "Error de apertura del fichero...\n";
+    }
 
     return 0;
 }
