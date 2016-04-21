@@ -13,28 +13,34 @@ void lee_linea(char c[], int tamano){
 }
 
 int main(){
-    char imagen[100000];
-    char grises[100];
-    char img_salida[100000];
+    char nombre_imagen[50000];
+    char nombre_grises[50];
+    char grises[200];
+    char img_salida[50000];
+    char arteASCII[50000];
     ifstream entrada;
-    ofstream salida;
     Imagen origen;
 
+    int n_cadenas; //numero de cadenas que hay en <nombre_grises>
+    char aux[100];
+
     cout << "imagen de entrada (imagenes/<nombre>.pgm): ";
-    cin >> imagen;
+    cin >> nombre_imagen;
     cout << "fichero de cadenas: ";
-    cin >> grises;
+    cin >> nombre_grises;
     cout << "fichero de salida: ";
     cin >> img_salida;
 
-    int n_cadenas; //numero de cadenas que hay en grises.txt
-    char aux[100];
-    entrada.open(imagen);
+    ofstream salida(img_salida);
+
+
+    entrada.open(nombre_grises);
+
     if(entrada){
-        entrada >> aux;    //ignoramos la primera linea
-        entrada >> n_cadenas;
+        entrada.getline(aux, 80);    //ignoramos la primera linea
+        entrada >> n_cadenas;        //capturamos el numero de cadenas de <nombre_grises>
         if(!entrada){
-            cerr << "Error de lectura del fichero...\n";
+            cerr << "Error de lectura del fichero de caracteres...\n";
         }
         while(entrada){
             entrada >> imagen;
@@ -42,8 +48,19 @@ int main(){
         entrada.close();
     }
     else{
-        cerr << "Error de apertura del fichero...\n";
+        cerr << "Error de apertura del fichero de caracteres...\n";
     }
+
+    if(!origen.leerImagen(nombre_imagen)){
+        cout << "Error leyendo imagen " << nombre_imagen << "...";
+        return 1;
+    }
+
+    cout << "\nLa imagen en arte ASCII es:\n";
+    if(origen.aArteASCII(grises, arteASCII, 50000))
+        cout << arteASCII;
+    else
+        cout << "La conversion no ha sido posible" << endl;
 
     return 0;
 }
