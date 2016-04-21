@@ -6,27 +6,35 @@
 #include "pgm.h"
 using namespace std;
 
+
+void lee_linea(char c[], int tamano){
+    do{
+        cin.getline(c, tamano);
+    }while(c[0] == '\0');
+}
+
+
 int main(){
 
-    //const int MAX = 200000;
+    const int MAX = 200000;
     const int LONG = 60;
 
+    char arteASCII[MAX];
     char nombre_imagen[LONG];     //nombre de la imagen de entrada
     char nombre_grises[LONG];        //nombre del fichero de caracteres de entrada
-    string img_salida;         //nombre parcial de las imagenes de salida
+    char img_salida[LONG];         //nombre parcial de las imagenes de salida
     ifstream entrada;
     Imagen origen;
 
     int n_cadenas; //numero de cadenas que hay en <nombre_grises>
     char aux[100];
-    int entero_aux;
 
     cout << "imagen de entrada (imagenes/<nombre>.pgm): ";
-    cin >> nombre_imagen;
+    lee_linea(nombre_imagen, LONG);
     cout << "fichero de cadenas (<nombre>.txt): ";
-    cin >> nombre_grises;
+    lee_linea(nombre_grises, LONG);
     cout << "fichero de salida: ";
-    cin >> img_salida;
+    lee_linea(img_salida, LONG);
 
     entrada.open(nombre_grises);
 
@@ -34,23 +42,26 @@ int main(){
     if(entrada){
         entrada.getline(aux, 80);    //ignoramos la primera linea
         entrada >> n_cadenas;        //capturamos el numero de cadenas de <nombre_grises>
+
         if(!entrada){
             cerr << "Error de lectura del fichero de caracteres...\n";
         }
+
         //Aqui leemos el resto del fichero y almacenamos en los ficheros de salida
         int i=1;
         string nombre;
-        while(!entrada.eof()){
-            //defino el nombre del archivo de salida
-            nombre = img_salida + to_string(i) + ".txt";
-            ofstream fsalida(nombre);
-            char auxiliar[LONG];
-            entrada.getline(auxiliar, LONG);
-            fsalida.close();
-            i++;
+        for(int i=0; i<=n_cadenas; i++){
+            if(entrada){
+                //defino el nombre del archivo de salida
+                nombre = img_salida + to_string(i) + ".txt";
+                ofstream fsalida(nombre);
+                char auxiliar[LONG];
+                entrada.getline(auxiliar, LONG);
+                fsalida << auxiliar;
+                fsalida.close();
+            }
         }
         entrada.close();
-        entero_aux = i;
     }
     else{
         cerr << "Error de apertura del fichero de caracteres...\n";
@@ -61,18 +72,12 @@ int main(){
         cout << "Error leyendo imagen " << nombre_imagen << "...";
         return 1;
     }
-    else if(origen.leerImagen(nombre_imagen)){
-        for(int j=0; j<entero_aux; j++){
-            string faux;
-            faux = img_salida + to_string(entero_aux) + ".txt";
-            if(origen.escribirImagen(nombre_imagen, false)){
-                cout << "Imagen " << j << " creada correctamente." << endl;
-            }
-            else{
-                cout << "Error al escribir la imagen " << j << "..." << endl;
-            }
-        }
-    }
+
+    // cout << "\nLa imagen en arte ASCII es:\n";
+    // if(origen.aArteASCII(grises, arteASCII, MAX))
+    //     cout << arteASCII;
+    // else
+    //     cout << "La conversion no ha sido posible" << endl;
 
     return 0;
 }
