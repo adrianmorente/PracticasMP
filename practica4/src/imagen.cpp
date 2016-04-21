@@ -136,7 +136,7 @@ bool Imagen::leerImagen(const char nombreFichero[]){
   }
   else
     res = false;
-  return res; 
+  return res;
 }
 
 
@@ -198,5 +198,4 @@ void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
   // {
   //   byte b = getPos(i);
   // }
-  //esto hay que implementarlo
 }
