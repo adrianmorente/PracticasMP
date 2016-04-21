@@ -60,8 +60,11 @@ int main(){
         cout << "Error leyendo imagen " << nombre_imagen << "...";
         return 1;
     }
-
-    cout << "\n\n" << salida1;
+    else{
+        if(origen.escribirImagen(salida1, LONG)){
+            cout << "yup";
+        }
+    }
 
 
     return 0;

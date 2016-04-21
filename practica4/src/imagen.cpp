@@ -131,8 +131,9 @@ bool Imagen::leerImagen(const char nombreFichero[]){
       res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
   }
   else if (tipo == IMG_PGM_TEXTO){
-    if(fils*cols == MAXPIXELS)
+    if(fils*cols <= MAXPIXELS){
       res = leerPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
+  }
   }
   else
     res = false;

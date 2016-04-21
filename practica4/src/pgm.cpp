@@ -6,6 +6,7 @@
   *
   */
 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include "pgm.h"
@@ -102,7 +103,6 @@ bool leerPGMTexto (const char nombre[], unsigned char datos[], int& filas, int& 
   filas=0;
   columnas=0;
   ifstream f(nombre);
-
   if (LeerTipo(f)==IMG_PGM_TEXTO)
     if (LeerCabecera (f, filas, columnas)){
       for (int i = 0; i < columnas; i++)
