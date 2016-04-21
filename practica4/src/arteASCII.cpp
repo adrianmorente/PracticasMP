@@ -33,6 +33,7 @@ int main(){
 
     entrada.open(nombre_grises);
 
+    //Leemos el fichero de grises (comprobando errores) -->
     if(entrada){
         entrada.getline(aux, 80);    //ignoramos la primera linea
         entrada >> n_cadenas;        //capturamos el numero de cadenas de <nombre_grises>
@@ -40,8 +41,10 @@ int main(){
         if(!entrada){
             cerr << "Error de lectura del fichero de caracteres...\n";
         }
+        //Aqui leemos el resto del fichero y almacenamos en los ficheros de salida
         while(!entrada.eof()){
-            entrada.getline() 
+
+            entrada.getline()
         }
         entrada.close();
     }

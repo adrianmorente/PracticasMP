@@ -94,7 +94,7 @@ bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int
   return exito;
 }
 
-//
+// _____________________________________________________________________________
 
 bool leerPGMTexto (const char nombre[], unsigned char datos[], int& filas, int& columnas)
 {
