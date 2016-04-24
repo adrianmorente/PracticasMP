@@ -16,10 +16,10 @@ void lee_linea(char c[], int tamano){
 
 int main(){
 
-    const int MAX = 200000;
+    //const int MAX = 200000;
     const int LONG = 60;
 
-    char arteASCII[MAX];
+    //char arteASCII[MAX];
     char nombre_imagen[LONG];     //nombre de la imagen de entrada
     char nombre_grises[LONG];        //nombre del fichero de caracteres de entrada
     char img_salida[LONG];         //nombre parcial de las imagenes de salida
@@ -48,7 +48,6 @@ int main(){
         }
 
         //Aqui leemos el resto del fichero y almacenamos en los ficheros de salida
-        int i=1;
         string nombre;
         for(int i=0; i<=n_cadenas; i++){
             if(entrada){
