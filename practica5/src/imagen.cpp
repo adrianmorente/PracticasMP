@@ -83,7 +83,8 @@ como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c nc
 del vector.
 */
 void Imagen::set(int y, int x, byte v){
-    datos[y*ncolumnas+x] = v;
+    if(y<=nfilas && x<=ncolumnas)
+        datos[y*ncolumnas+x] = v;
 }
 
 
@@ -138,11 +139,11 @@ bool Imagen::leerImagen(const char nombreFichero[]){
     bool res = false;
     TipoImagen tipo = infoPGM(nombreFichero, fils, cols);
     if(tipo == IMG_PGM_BINARIO){
-        if(fils*cols <= MAXPIXELS)
+        if(fils*cols <= nfilas*ncolumnas)
               res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
     }
     else if (tipo == IMG_PGM_TEXTO){
-        if(fils*cols <= MAXPIXELS)
+        if(fils*cols <= nfilas*ncolumnas)
               res = leerPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
     }
     else
@@ -159,54 +160,50 @@ bool Imagen::leerImagen(const char nombreFichero[]){
 @retval false 	si se ha producido algún error en la escritura
 */
 bool Imagen::escribirImagen(const char nombreFichero[], bool esBinario){
-  //return escribirPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
-  if(esBinario)
-    return escribirPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
-  else
-    return escribirPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
+    if(esBinario)
+        return escribirPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+    else
+        return escribirPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
 }
 
 
 
 //extraer plano k
 Imagen Imagen::plano(int k){
-  Imagen plano (nfilas,ncolumnas);
-  for (int i = 0; i < filas()*columnas(); ++i){
-    if (getbit(getPos(i),k))
-      plano.setPos(i,0x80);
-    else
-      plano.setPos(i,0);
-  }
-  return plano;
+    Imagen plano (nfilas,ncolumnas);
+    for (int i = 0; i < filas()*columnas(); ++i){
+        if (getbit(getPos(i),k))
+          plano.setPos(i,0x80);
+        else
+          plano.setPos(i,0);
+    }
+    return plano;
 }
 
 
 
 //convertir a arte ASCII
 bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
-  int cardinal = strlen(grises);
-  int contador_char=0;
+    int cardinal = strlen(grises);
+    int contador_char=0;
 
-  if (filas()*(columnas()+1) > maxlong)
-    return false;
+    if (filas()*(columnas()+1) > maxlong)
+        return false;
 
-  for (int i = 0; i < filas(); i++){
-    for (int j = 0; j < columnas(); j++){
-      aArteASCII[contador_char]=grises[(get(i,j)*cardinal)/256];
-      contador_char++;
+    for (int i = 0; i < filas(); i++){
+        for (int j = 0; j < columnas(); j++){
+            aArteASCII[contador_char]=grises[(get(i,j)*cardinal)/256];
+            contador_char++;
+        }
+        aArteASCII[contador_char]='\n';
+        contador_char++;
     }
-    aArteASCII[contador_char]='\n';
-    contador_char++;
-  }
-  aArteASCII[contador_char] = '\0';
-  return true;
+    aArteASCII[contador_char] = '\0';
+    return true;
 }
 
 
 
 void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
-  // for (int i = 0; i < filas()*columnas(); ++i)
-  // {
-  //   byte b = getPos(i);
-  // }
+
 }

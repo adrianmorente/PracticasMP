@@ -51,8 +51,10 @@ sus elementos a 0.
    void crear(int filas, int columnas);
 
 
-
-   void Imagen::destruir();
+/**
+@brief Destruye el vector de bytes y libera la memoria reservada
+*/
+   void destruir();
 
 
 /**
