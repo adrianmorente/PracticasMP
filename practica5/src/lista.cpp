@@ -14,6 +14,7 @@ Lista::Lista(string valor){
     Celda *n_celda;
     n_celda = new Celda;
     n_lista->cabecera = n_celda;
+    n_celda->datos = valor;
     n_celda->siguiente = 0;
 }
 
