@@ -9,10 +9,12 @@ Lista::Lista(){
 }
 
 Lista::Lista(string valor){
-    Celda nueva;
-    cabecera = &nueva;
-    nueva.datos = valor;
-    nueva.siguiente = 0;
+    Lista *n_lista;
+    n_lista = new Lista;
+    Celda *n_celda;
+    n_celda = new Celda;
+    n_lista->cabecera = n_celda;
+    n_celda->siguiente = 0;
 }
 
 
