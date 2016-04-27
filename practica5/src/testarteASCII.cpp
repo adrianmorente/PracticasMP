@@ -3,6 +3,8 @@
 #include "imagen.h"
 #include "byte.h"
 #include "pgm.h"
+#include "lista.h"
+
 using namespace std;
 
 int main(){

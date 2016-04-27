@@ -1,6 +1,7 @@
 #include "pgm.h"
 #include "imagen.h"
 #include "byte.h"
+#include "lista.h"
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
@@ -206,4 +207,11 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
 void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
 
+}
+
+
+
+bool Imagen::listaAArteASCII(const Lista celdas){
+    bool res=false;
+    return res;
 }

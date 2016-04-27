@@ -38,6 +38,9 @@ $(OBJ)/byte.o: $(SRC)/byte.cpp $(INC)/byte.h
 $(OBJ)/pgm.o: $(SRC)/pgm.cpp $(INC)/pgm.h
 		$(CXX) $(CPPFLAGS) $(SRC)/pgm.cpp -o $(OBJ)/pgm.o
 
+$(OBJ)/lista.o: $(SRC)/lista.cpp $(INC)/lista.h
+	$(CXX) $(CPPFLAGS) $(SRC)/lista.cpp -o $(OBJ)/lista.o
+
 $(OBJ)/testplano.o: $(SRC)/testplano.cpp
 	$(CXX) $(CPPFLAGS) $(SRC)/testplano.cpp -o $(OBJ)/testplano.o
 

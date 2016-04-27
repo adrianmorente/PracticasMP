@@ -10,6 +10,8 @@
 #include <fstream>
 #include <string>
 #include "pgm.h"
+#include "lista.h"
+
 using namespace std;
 
 

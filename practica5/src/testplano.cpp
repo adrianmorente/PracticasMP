@@ -4,6 +4,7 @@
 #include "pgm.h"
 #include "imagen.h"
 #include "byte.h"
+#include "lista.h"
 using namespace std;
 
 int main(){

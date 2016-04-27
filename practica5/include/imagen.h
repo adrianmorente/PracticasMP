@@ -9,6 +9,7 @@
 #include <iostream>
 #include "byte.h"
 #include "pgm.h"
+#include "lista.h"
 using namespace std;
 
 
@@ -149,6 +150,10 @@ Lee desde disco los datos de la imagen llamada @a nombreFichero y la guarda en l
 
 //Insertar plano en imagen
     void insertarplano(Imagen info, int planoinfo, int planosalida);
+
+//convertir imagen (lista de celdas) a arte ASCII
+    bool listaAArteASCII(const Lista celdas);
+
 
 };
 
