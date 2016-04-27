@@ -50,6 +50,7 @@ int Lista::longitud() const{
     int i=0;
     while(aux->siguiente != 0){
         i++;
+        aux = aux->siguiente;
     }
     delete aux;
     return i;

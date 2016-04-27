@@ -88,6 +88,7 @@ bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int
   filas=0;
   columnas=0;
   ifstream f(nombre);
+  cout << "estoy leyendo" << endl;
 
   if (LeerTipo(f)==IMG_PGM_BINARIO)
     if (LeerCabecera (f, filas, columnas))

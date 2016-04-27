@@ -51,7 +51,6 @@ void Imagen::destruir(){
     nfilas=ncolumnas=0;
     if (datos!=0)
         delete [] datos;
-    datos=0;
 }
 
 
@@ -140,12 +139,16 @@ bool Imagen::leerImagen(const char nombreFichero[]){
     bool res = false;
     TipoImagen tipo = infoPGM(nombreFichero, fils, cols);
     if(tipo == IMG_PGM_BINARIO){
-        if(fils*cols <= nfilas*ncolumnas)
+        crear(fils, cols);
+        if(fils*cols <= nfilas*ncolumnas){
               res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+          }
     }
     else if (tipo == IMG_PGM_TEXTO){
-        if(fils*cols <= nfilas*ncolumnas)
+        crear(fils,cols);
+        if(fils*cols <= nfilas*ncolumnas){
               res = leerPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
+          }
     }
     else
         res = false;
