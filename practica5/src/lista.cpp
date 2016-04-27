@@ -10,6 +10,7 @@ Lista::Lista(){
 
 Lista::Lista(string valor){
     Celda nueva;
+    cabecera = &nueva;
     nueva.datos = valor;
     nueva.siguiente = 0;
 }
@@ -27,8 +28,8 @@ void Lista::insertar(string valor){
         aux = aux->siguiente;
 
     //una vez me he colocado en la ultima posicion, inserto
-
-
+    aux->siguiente = &nueva;
+    nueva.siguiente = 0;
 }
 
 string Lista::getCelda(int pos) const{
