@@ -9,9 +9,9 @@ using namespace std;
 
 /// Construye una imagen vacia (0 filas, 0 columnas)
 Imagen::Imagen(){
-  //datos=0;
-  nfilas=0;
-  ncolumnas=0;
+    datos=0;
+    nfilas=0;
+    ncolumnas=0;
 }
 
 
@@ -23,14 +23,7 @@ Construye una imagen de tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
 Imagen::Imagen(int filas, int columnas){
-  /*
-  nfilas=filas;
-  ncolumnas=columnas;
-  for(int i=0; i<(filas*columnas-1); i++){
-    datos[i] = 0xFF;
-  }
-  */
-  crear(filas, columnas);
+    crear(filas, columnas);
 }
 
 
@@ -42,22 +35,21 @@ Dimensiona la imagen a tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
 void Imagen::crear(int filas, int columnas){
-  //Imagen(filas, columnas);
-  if (datos!=0) {
-    destruir();
-  }
-  nfilas=filas;
-  ncolumnas=columnas;
-  datos = new byte[filas=columnas];
-  for (int i = 0; i < filas*columnas; i++)
-    datos[i]=0;
+    if (datos!=0) {
+        destruir();
+    }
+    nfilas=filas;
+    ncolumnas=columnas;
+    datos = new byte[filas*columnas];
+    for (int i=0; i<(filas*columnas); i++)
+        datos[i]=0xFF;
 }
 
 
 void Imagen::destruir(){
-  nfilas=ncolumnas=0;
-  if (datos!=0)
-    delete [] datos;  
+    nfilas=ncolumnas=0;
+    if (datos!=0)
+        delete [] datos;
 }
 
 

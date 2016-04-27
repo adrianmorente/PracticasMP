@@ -20,10 +20,9 @@ typedef unsigned char byte; ///< byte = 8bits almacenado en un unsigned char
 class Imagen{
 
 private:
-   static const int MAXPIXELS = 1000000;  ///< número máximo de píxeles que podemos almacenar
-   byte datos[MAXPIXELS];///< datos de la imagen
-   int nfilas; 			///< número de filas de la imagen
-   int ncolumnas;		///< número de columnsa de la imagen
+   byte *datos;             ///< datos de la imagen
+   int nfilas; 			         ///< número de filas de la imagen
+   int ncolumnas;		 ///< número de columnsa de la imagen
 
 public:
 /// Construye una imagen vacía (0 filas, 0 columnas)
