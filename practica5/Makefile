@@ -17,17 +17,17 @@ $(BIN):
 $(OBJ):
 	mkdir -p $(OBJ)
 
-$(BIN)/testarteASCII: $(OBJ)/testarteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
-	$(CXX) -o $(BIN)/testarteASCII $(OBJ)/testarteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
+$(BIN)/testarteASCII: $(OBJ)/testarteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
+	$(CXX) -o $(BIN)/testarteASCII $(OBJ)/testarteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
 
-$(BIN)/arteASCII: $(OBJ)/arteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
-	$(CXX) -o $(BIN)/arteASCII $(OBJ)/arteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
+$(BIN)/arteASCII: $(OBJ)/arteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
+	$(CXX) -o $(BIN)/arteASCII $(OBJ)/arteASCII.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
 
-$(BIN)/testimagen: $(OBJ)/testimagen.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
-	$(CXX) -o $(BIN)/testimagen $(OBJ)/testimagen.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
+$(BIN)/testimagen: $(OBJ)/testimagen.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
+	$(CXX) -o $(BIN)/testimagen $(OBJ)/testimagen.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
 
-$(BIN)/testplano: $(OBJ)/testplano.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
-	$(CXX) -o $(BIN)/testplano $(OBJ)/testplano.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o
+$(BIN)/testplano: $(OBJ)/testplano.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
+	$(CXX) -o $(BIN)/testplano $(OBJ)/testplano.o $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
 
 $(OBJ)/imagen.o: $(SRC)/imagen.cpp $(INC)/imagen.h
 	$(CXX) $(CPPFLAGS) $(SRC)/imagen.cpp -o $(OBJ)/imagen.o

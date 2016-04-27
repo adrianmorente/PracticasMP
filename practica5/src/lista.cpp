@@ -9,7 +9,7 @@ Lista::Lista(){
 }
 
 Lista::Lista(string valor){
-    Celda nueva = new Celda;
+    Celda nueva;
     nueva.datos = valor;
     nueva.siguiente = 0;
 }
@@ -21,7 +21,7 @@ void Lista::destruir(){
 
 void Lista::insertar(string valor){
     Celda *aux;
-    Celda nueva = new Celda;
+    Celda nueva;
     aux = cabecera;
     while(aux->siguiente != 0)
         aux = aux->siguiente;
@@ -29,7 +29,6 @@ void Lista::insertar(string valor){
     //una vez me he colocado en la ultima posicion, inserto
 
 
-    delete nueva;
 }
 
 string Lista::getCelda(int pos) const{
