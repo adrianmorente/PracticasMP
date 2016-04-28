@@ -29,10 +29,11 @@ void Lista::destruir(){
 }
 
 void Lista::insertar(string valor){
-    Celda *aux = cabecera->siguiente;
     Celda *nueva = new Celda;
     nueva->datos = valor;
     nueva->siguiente = 0;
+    Celda *aux = new Celda;
+    aux = cabecera->siguiente;
     while(aux!=0)
         aux = aux->siguiente;
     //estoy al final: inserto
