@@ -9,53 +9,53 @@ Lista::Lista(){
 }
 
 Lista::Lista(string valor){
-    Lista *n_lista;
-    n_lista = new Lista;
-    Celda *n_celda;
-    n_celda = new Celda;
-    n_lista->cabecera = n_celda;
-    n_celda->datos = valor;
-    n_celda->siguiente = 0;
+    cabecera = new Celda;
+    cabecera->datos = valor;
+    cabecera->siguiente = 0;
 }
 
 
 void Lista::destruir(){
-
+    if(cabecera!=0){
+        Celda *siguiente_celda = cabecera->siguiente;
+        while(siguiente_celda!=0){
+            Celda *a_borrar = siguiente_celda->siguiente;
+            delete siguiente_celda;
+            siguiente_celda=a_borrar;
+        }
+        delete cabecera;
+        cabecera->siguiente=0;
+    }
 }
 
 void Lista::insertar(string valor){
-    Celda *aux;
-    Celda nueva;
-    aux = cabecera;
-    while(aux->siguiente != 0)
+    Celda *aux = cabecera->siguiente;
+    Celda *nueva = new Celda;
+    nueva->datos = valor;
+    nueva->siguiente = 0;
+    while(aux!=0)
         aux = aux->siguiente;
-
-    //una vez me he colocado en la ultima posicion, inserto
-    aux->siguiente = &nueva;
-    nueva.siguiente = 0;
+    //estoy al final: inserto
+    aux->siguiente = nueva;
 }
 
 string Lista::getCelda(int pos) const{
-    Celda *aux = new Celda;
-    aux = cabecera;
+    Celda *aux = cabecera;
     int i=0;
     while(i < pos){
         i++;
         aux = aux->siguiente;
     }
-    delete aux;
     return aux->datos;
 }
 
 int Lista::longitud() const{
-    Celda *aux = new Celda;
-    aux = cabecera;
-    int i=0;
-    while(aux->siguiente != 0){
+    Celda *aux = cabecera;
+    int i=1;
+    while(aux != 0){
         i++;
         aux = aux->siguiente;
     }
-    delete aux;
     return i;
 }
 
@@ -72,7 +72,8 @@ int Lista::longitud() const{
  * determinado, y se ha de crear la lista con el numero de elementos que contenga.
  */
 bool Lista::leerLista(const char nombrefichero[]){
-	ifstream fin;
+    destruir();
+    ifstream fin;
 	fin.open(nombrefichero);
 	if(!fin){
 		return false;
@@ -94,6 +95,10 @@ bool Lista::leerLista(const char nombrefichero[]){
 				}
 				getline(fin,grises); //leer cadena de caracteres
 			}
+            // if(i!=lineas){
+            //     destruir();
+            //     return false;
+            // }
 		}
 		fin.close();
 	}
