@@ -29,15 +29,21 @@ void Lista::destruir(){
 }
 
 void Lista::insertar(string valor){
-    Celda *nueva = new Celda;
-    nueva->datos = valor;
-    nueva->siguiente = 0;
-    Celda *aux = new Celda;
-    aux = cabecera->siguiente;
-    while(aux!=0)
-        aux = aux->siguiente;
-    //estoy al final: inserto
-    aux->siguiente = nueva;
+    if(cabecera==0){
+        cabecera = new Celda;
+        cabecera->datos = valor;
+        cabecera->siguiente = 0;
+    }
+    else{
+        Celda *aux = new Celda;
+        aux = cabecera;
+        while(aux->siguiente!=0)
+            aux = aux->siguiente;
+        //estoy al final: inserto
+        aux = new Celda;
+        aux->datos=valor;
+        aux->siguiente=0;
+    }
 }
 
 string Lista::getCelda(int pos) const{

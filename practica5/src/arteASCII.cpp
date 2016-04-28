@@ -46,7 +46,8 @@ int main(){
 			cout << "Exito en la conversion." << endl;
 			cout << "Chequee los ficheros asciiX.txt" << endl;
 			cout << endl;
-		}else{
+		}
+		else{
 			cerr << "La conversion no ha sido posible" << endl;
 			cerr << endl;
 		}

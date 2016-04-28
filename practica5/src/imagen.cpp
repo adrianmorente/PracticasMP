@@ -24,6 +24,7 @@ Construye una imagen de tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
 Imagen::Imagen(int filas, int columnas){
+    datos=0;
     crear(filas, columnas);
 }
 
@@ -36,7 +37,7 @@ Dimensiona la imagen a tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
 void Imagen::crear(int filas, int columnas){
-    if (datos!=0) {
+    if (datos!=0){
         destruir();
     }
     nfilas=filas;
@@ -215,6 +216,6 @@ void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
 
 
 bool Imagen::listaAArteASCII(const Lista celdas){
-    bool res=false;
+    bool res=true;
     return res;
 }
