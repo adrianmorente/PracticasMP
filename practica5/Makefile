@@ -6,7 +6,7 @@ BIN = bin
 LIB = lib
 
 CXX = g++
-CPPFLAGS = -Wall -g -c -I$(INC)
+CPPFLAGS = -Wall -g -c -I$(INC) -std=c++11
 
 
 all: $(OBJ) $(BIN) $(BIN)/testimagen $(BIN)/testplano $(BIN)/arteASCII $(BIN)/testarteASCII

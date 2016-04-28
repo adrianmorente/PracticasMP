@@ -3,6 +3,7 @@
 #include "byte.h"
 #include "lista.h"
 #include <iostream>
+#include <fstream>
 #include <string.h>
 #include <stdio.h>
 using namespace std;
@@ -156,6 +157,10 @@ bool Imagen::leerImagen(const char nombreFichero[]){
     return res;
 }
 
+void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
+
+}
+
 
 /**
 @brief Guarda una imagen desde un fichero
@@ -208,14 +213,15 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 }
 
 
-
-void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
-
-}
-
-
-
 bool Imagen::listaAArteASCII(const Lista celdas){
-    bool res=true;
-    return res;
+    string nombre, aux;
+    for(int i=0; i<celdas.longitud(); i++){
+        cout << i << endl;
+        aux = celdas.getCelda(i);
+        nombre = "ascii" + to_string(i) + ".txt";
+        ofstream fsalida(nombre);
+        fsalida << aux;
+        fsalida.close();
+    }
+    return false;
 }
