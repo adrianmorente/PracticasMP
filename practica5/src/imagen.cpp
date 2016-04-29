@@ -215,13 +215,14 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
 bool Imagen::listaAArteASCII(const Lista celdas){
     string nombre, aux;
+    cout << celdas.longitud() << endl;
     for(int i=0; i<celdas.longitud(); i++){
-        cout << i << endl;
+        cout << celdas.getCelda(i);
         aux = celdas.getCelda(i);
         nombre = "ascii" + to_string(i) + ".txt";
         ofstream fsalida(nombre);
         fsalida << aux;
         fsalida.close();
     }
-    return false;
+    return true;
 }

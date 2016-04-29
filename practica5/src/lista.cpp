@@ -1,7 +1,7 @@
 #include <string>
 #include <fstream>
 #include "lista.h"
-
+#include <iostream>
 using namespace std;
 
 Lista::Lista(){
@@ -40,9 +40,9 @@ void Lista::insertar(string valor){
         while(aux->siguiente!=0)
             aux = aux->siguiente;
         //estoy al final: inserto
-        aux = new Celda;
-        aux->datos=valor;
-        aux->siguiente=0;
+        aux->siguiente = new Celda;
+        aux->siguiente->datos = valor;
+        aux->siguiente->siguiente = 0;
     }
 }
 
@@ -59,7 +59,7 @@ string Lista::getCelda(int pos) const{
 int Lista::longitud() const{
     Celda *aux = cabecera;
     int i=1;
-    while(aux != 0){
+    while(aux->siguiente != 0){
         i++;
         aux = aux->siguiente;
     }
@@ -102,10 +102,10 @@ bool Lista::leerLista(const char nombrefichero[]){
 				}
 				getline(fin,grises); //leer cadena de caracteres
 			}
-            // if(i!=lineas){
-            //     destruir();
-            //     return false;
-            // }
+            if(i!=lineas){
+                destruir();
+                return false;
+            }
 		}
 		fin.close();
 	}
