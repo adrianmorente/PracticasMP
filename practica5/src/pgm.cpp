@@ -88,7 +88,6 @@ bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int
   filas=0;
   columnas=0;
   ifstream f(nombre);
-  cout << "estoy leyendo" << endl;
 
   if (LeerTipo(f)==IMG_PGM_BINARIO)
     if (LeerCabecera (f, filas, columnas))
@@ -148,8 +147,8 @@ bool escribirPGMTexto (const char nombre[], const unsigned char datos[], int fil
       f << datos[i];
     }
     res = true;
-    //f.write(reinterpret_cast<const char *>(datos),filas*columnas);
-    //if (!f) res=false;
+    f.write(reinterpret_cast<const char *>(datos),filas*columnas);
+    if (!f) res=false;
   }
   return res;
 }
