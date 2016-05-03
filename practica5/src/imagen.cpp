@@ -215,31 +215,26 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
 bool Imagen::listaAArteASCII(const Lista celdas){
     string nombre, aux;
-    int j;
+    char final[100000], contenido[60];
     //creamos ficheros con cadenas de caracteres
     for(int i=0; i<celdas.longitud(); i++){
-        j=i+1;
         aux = celdas.getCelda(i);
-        nombre = "ascii" + to_string(j) + ".txt";
+        nombre = "ascii" + to_string(i+1) + ".txt";
         ofstream fsalida(nombre);
         fsalida << aux;
         fsalida.close();
-    }
-    //creamos ficheros con las imagenes convertidas a arteASCII
-    for(int i=0; i<celdas.longitud(); i++){
-        nombre = "ascii" + to_string(i+1) + ".txt";
+        //
         ifstream fentrada(nombre);
-        char auxiliar[40];
-        char final[100000];
-        fentrada >> auxiliar;
+        fentrada >> contenido;
         fentrada.close();
-        if(aArteASCII(auxiliar, final, 100000)){
-            cout << "Exito convirtiendo la imagen" << i+1 << " a arteASCII: " << endl;
+        if(aArteASCII(contenido, final, 100000)){
+            cout << "\nExito convirtiendo la imagen a aArteASCII " << i+1 << ": " << endl;
             cout << final;
         }
         else
-            cout << "Error convirtiendo la imagen " << i+1 << " a arteASCII..." << endl;
+            cout << "\nError convirtiendo la imagen a aArteASCII " << i+1 << "..." << endl;
     }
+
 
     return true;
 }
