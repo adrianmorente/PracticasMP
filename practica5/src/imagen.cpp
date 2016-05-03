@@ -229,7 +229,12 @@ bool Imagen::listaAArteASCII(const Lista celdas){
     for(int i=0; i<celdas.longitud(); i++){
         nombre = "ascii" + to_string(i+1) + ".txt";
         //falta llamar a aArteASCII para cada fichero de grises "asciiX.txt"
-        
+        ifstream aux(nombre);
+        char cadena[30], final[100000];
+        aux >> cadena;
+        aux.close();
+        aArteASCII(cadena, final, 100000);
+        cout << final << "\n\n";
     }
     return true;
 }
