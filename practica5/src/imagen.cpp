@@ -216,11 +216,9 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 bool Imagen::listaAArteASCII(const Lista celdas){
     string nombre, aux;
     int j;
-    cout << celdas.longitud() << endl;
     //creamos ficheros con cadenas de caracteres
     for(int i=0; i<celdas.longitud(); i++){
         j=i+1;
-        cout << celdas.getCelda(i);
         aux = celdas.getCelda(i);
         nombre = "ascii" + to_string(j) + ".txt";
         ofstream fsalida(nombre);
@@ -231,6 +229,7 @@ bool Imagen::listaAArteASCII(const Lista celdas){
     for(int i=0; i<celdas.longitud(); i++){
         nombre = "ascii" + to_string(i+1) + ".txt";
         //falta llamar a aArteASCII para cada fichero de grises "asciiX.txt"
+        
     }
     return true;
 }
