@@ -200,6 +200,13 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
     if (filas()*(columnas()+1) > maxlong)
         return false;
 
+    for(int i=0; i<10; i++){
+        for(int j=0; j<100; j++){
+            cout << get(i,j) << " ";
+        }
+        cout << endl;
+    }
+
     for (int i = 0; i < filas(); i++){
         for (int j = 0; j < columnas(); j++){
             aArteASCII[contador_char]=grises[(get(i,j)*cardinal)/256];

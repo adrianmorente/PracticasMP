@@ -107,9 +107,10 @@ bool leerPGMTexto (const char nombre[], unsigned char datos[], int& filas, int& 
   ifstream f(nombre);
   if (LeerTipo(f)==IMG_PGM_TEXTO)
     if (LeerCabecera (f, filas, columnas)){
-      for (int i = 0; i < columnas; i++)
-        f >> datos[i];
-	//if (f.read(reinterpret_cast<char *>(datos),filas*columnas))
+        for(int i=0; i<filas*columnas; i++){
+                f >> datos[i];
+        }
+	if (f.read(reinterpret_cast<char *>(datos),filas*columnas))
 	  exito= true;
   }
   return exito;
