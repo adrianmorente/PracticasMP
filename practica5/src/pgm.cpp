@@ -99,19 +99,23 @@ bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int
 
 // _____________________________________________________________________________
 
-bool leerPGMTexto (const char nombre[], unsigned char datos[], int& filas, int& columnas)
-{
+bool leerPGMTexto (const char nombre[], unsigned char datos[], int& filas, int& columnas){
   bool exito= false;
   filas=0;
   columnas=0;
   ifstream f(nombre);
-  if (LeerTipo(f)==IMG_PGM_TEXTO)
+  int i=0;
+
+  if (LeerTipo(f)==IMG_PGM_TEXTO){
     if (LeerCabecera (f, filas, columnas)){
-        for(int i=0; i<filas*columnas; i++){
-                f >> datos[i];
+        while(i < filas*columnas){
+          int c;
+          f >> c;
+          datos[i] = c;
+          i++;
         }
-	if (f.read(reinterpret_cast<char *>(datos),filas*columnas))
-	  exito= true;
+        exito=true;
+    }
   }
   return exito;
 }
@@ -137,19 +141,18 @@ bool escribirPGMBinario (const char nombre[], const unsigned char datos[], int f
 
 bool escribirPGMTexto (const char nombre[], const unsigned char datos[], int filas, int columnas)
 {
-  ofstream f(nombre);
-  bool res= false;
-
-  if (f) {
-    f << "P2" << endl;
-    f << columnas << ' ' << filas << endl;
-    f << 255 << endl;
-    for (int i=0; i<filas*columnas; i++) {
-      f << datos[i];
+    ofstream f(nombre);
+    bool res=true;
+    if(f){
+        f << "P2" << endl;
+        f << columnas << ' ' << filas << endl;
+        f << 255 << endl;
+        for(int i=0; i<filas*columnas; i++){
+            f << (int)(datos[i]);
+            f << ' ';
+        }
+        if(!f)
+            res=false;
     }
-    res = true;
-    f.write(reinterpret_cast<const char *>(datos),filas*columnas);
-    if (!f) res=false;
-  }
-  return res;
+    return res;    
 }

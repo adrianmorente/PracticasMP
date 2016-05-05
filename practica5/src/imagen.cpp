@@ -157,10 +157,6 @@ bool Imagen::leerImagen(const char nombreFichero[]){
     return res;
 }
 
-void Imagen::insertarplano(Imagen info, int planoinfo, int planosalida){
-
-}
-
 
 /**
 @brief Guarda una imagen desde un fichero
@@ -199,13 +195,6 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
     if (filas()*(columnas()+1) > maxlong)
         return false;
-
-    for(int i=0; i<10; i++){
-        for(int j=0; j<100; j++){
-            cout << get(i,j) << " ";
-        }
-        cout << endl;
-    }
 
     for (int i = 0; i < filas(); i++){
         for (int j = 0; j < columnas(); j++){
