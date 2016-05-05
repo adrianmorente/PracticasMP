@@ -22,6 +22,7 @@ void Lista::destruir(){
             Celda *a_borrar = siguiente_celda->siguiente;
             delete siguiente_celda;
             siguiente_celda=a_borrar;
+            delete a_borrar;
         }
         delete cabecera;
         cabecera->siguiente=0;
@@ -43,6 +44,7 @@ void Lista::insertar(string valor){
         aux->siguiente = new Celda;
         aux->siguiente->datos = valor;
         aux->siguiente->siguiente = 0;
+        delete aux;
     }
 }
 

@@ -27,7 +27,7 @@ int main(){
     Imagen origen;
     Lista celdas;
 
-	cout << "Introduzca nombre de la imagen: ";
+	cout << "Introduzca nombre de la imagen (imagenes/<nombre_imagen>.pgm): ";
 	leelinea(ficheroImagen);
 
     // Leer la imagen desde fichero
@@ -36,7 +36,7 @@ int main(){
 		return 1;
     }
 
-	cout << "Introduzca el nombre de fichero con el conjunto de caracteres para realizar la conversion: ";
+	cout << "Introduzca el nombre de fichero con el conjunto de caracteres para realizar la conversion (grises.txt): ";
 	leelinea(ficheroGrises);
 
 	// Leer cadenas desde fichero

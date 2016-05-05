@@ -56,6 +56,7 @@ void Imagen::destruir(){
     nfilas=ncolumnas=0;
     if (datos!=0)
         delete [] datos;
+    datos=0;
 }
 
 
