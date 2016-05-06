@@ -56,7 +56,6 @@ void Imagen::destruir(){
     nfilas=ncolumnas=0;
     if (datos!=0)
         delete [] datos;
-    datos=0;
 }
 
 
@@ -211,13 +210,12 @@ bool Imagen::aArteASCII(const char grises[], char aArteASCII[],int maxlong){
 
 
 bool Imagen::listaAArteASCII(const Lista celdas){
-    string nombre, aux;
-    int tama;
+    string nombre;
     //creamos ficheros con cadenas de caracteres
     for(int i=0; i<celdas.longitud(); i++){
         nombre = "ascii" + to_string(i+1) + ".txt";
         ofstream fsalida;
-        tama = nfilas*(ncolumnas+1)+1;     //+1 para el \0
+        const int tama = nfilas*(ncolumnas+1)+1;     //+1 para el \0
         char *final = new char[tama];
         if(aArteASCII(celdas.getCelda(i).c_str(), final, tama)){
             fsalida.open(nombre);
