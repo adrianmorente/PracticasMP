@@ -141,19 +141,14 @@ Lee desde disco los datos de la imagen llamada @a nombreFichero y la guarda en l
 */
    bool escribirImagen(const char nombreFichero[], bool esBinario);
 
-
 //Extraer plano k-esimo de la imagen
     Imagen plano(int k);
 
 //Convertir imagen a arte ASCII
     bool aArteASCII(const char grises[], char aArteASCII[],int maxlong);
 
-//Insertar plano en imagen
-    void insertarplano(Imagen info, int planoinfo, int planosalida);
-
 //convertir imagen (lista de celdas) a arte ASCII
-    bool listaAArteASCII(const Lista celdas);
-
+    bool listaAArteASCII(const Lista &celdas);
 
 };
 

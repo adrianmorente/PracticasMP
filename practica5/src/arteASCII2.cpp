@@ -51,7 +51,7 @@ int main(){
 			cerr << "La conversion no ha sido posible" << endl;
 			cerr << endl;
 		}
-		celdas.destruir(); // liberar memoria listas
+		//celdas.destruir(); // liberar memoria listas
 	}else{
 		cerr << "Error lista de grises " << ficheroGrises << endl;
 	}

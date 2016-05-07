@@ -30,21 +30,19 @@ void Lista::destruir(){
 }
 
 void Lista::insertar(string valor){
+    Celda *nueva = new Celda;
+    nueva->datos = valor;
+    nueva->siguiente =0;
+
     if(cabecera==0){
-        cabecera = new Celda;
-        cabecera->datos = valor;
-        cabecera->siguiente = 0;
+        cabecera = nueva;
     }
     else{
-        Celda *aux = new Celda;
-        aux = cabecera;
+        Celda *aux = cabecera;
         while(aux->siguiente!=0)
             aux = aux->siguiente;
         //estoy al final: inserto
-        aux->siguiente = new Celda;
-        aux->siguiente->datos = valor;
-        aux->siguiente->siguiente = 0;
-        delete aux;
+        aux->siguiente = nueva;
     }
 }
 
@@ -59,11 +57,14 @@ string Lista::getCelda(int pos) const{
 }
 
 int Lista::longitud() const{
-    Celda *aux = cabecera;
-    int i=1;
-    while(aux->siguiente != 0){
+    int i=0;
+    if(cabecera != 0){
         i++;
-        aux = aux->siguiente;
+        Celda *aux = cabecera;
+        while(aux->siguiente != 0){
+            i++;
+            aux = aux->siguiente;
+        }
     }
     return i;
 }
@@ -104,10 +105,6 @@ bool Lista::leerLista(const char nombrefichero[]){
 				}
 				getline(fin,grises); //leer cadena de caracteres
 			}
-            if(i!=lineas){
-                destruir();
-                return false;
-            }
 		}
 		fin.close();
 	}
