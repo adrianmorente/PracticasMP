@@ -216,8 +216,6 @@ bool Imagen::listaAArteASCII(const Lista &celdas){
         nombre = "ascii" + to_string(i+1) + ".txt";
         const int tama = nfilas*(ncolumnas+1)+1;     //+1 para el \0
         char *final = new char[tama];
-        cout << celdas.longitud() << endl;
-        cout << "celda "<<i<<": " << celdas.getCelda(i).c_str() << endl;
 
         if(aArteASCII(celdas.getCelda(i).c_str(), final, tama)){
             ofstream fsalida;
