@@ -1,2 +1,2 @@
-
-practica4/include/.DS_Store
+# Ignore Mac DS_Store files
+.DS_Store
