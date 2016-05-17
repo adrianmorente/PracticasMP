@@ -73,7 +73,7 @@ void Imagen::destruir(){
 }
 
 //Operador de asignacion
-Imagen::Imagen & operator=(const Imagen & aux){
+Imagen & Imagen::operator=(Imagen & aux){
   if(this != &aux){
     destruir();
     nfilas = aux.nfilas;
@@ -86,7 +86,7 @@ Imagen::Imagen & operator=(const Imagen & aux){
 }
 
 //Operador de suma
-Imagen::Imagen operator+(const Imagen& aux){
+Imagen Imagen::operator+(Imagen& aux){
   int c = ncolumnas + aux.ncolumnas;
   int f;
   if(nfilas > aux.nfilas)

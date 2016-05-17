@@ -19,24 +19,21 @@ Lista::~Lista(){
 }
 
 Lista::Lista(const Lista &old){
-    if(this != old){
+    if(this != &old){
         cabecera = old.cabecera;
-
     }
-    return (*this);
 }
 
-Lista::operator=(const Lista &old){
+Lista Lista::operator=(const Lista &old){
     if(old.cabecera!=0)
         cabecera = old.cabecera;
     return (*this);
 }
 
-Lista::operator+(const string &s){
-    //consiste en añadir una cadena al final de la Lista
-    //falta algo aqui.
-    insertar(s);
-    return (*this);
+Lista Lista::operator+(const string &s){
+    Lista nueva(*this);
+    nueva.insertar(s);
+    return nueva;
 }
 
 void Lista::destruir(){
