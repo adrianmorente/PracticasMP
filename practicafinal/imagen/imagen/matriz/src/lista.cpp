@@ -14,6 +14,27 @@ Lista::Lista(string valor){
     cabecera->siguiente = 0;
 }
 
+Lista::~Lista(){
+    destruir();
+}
+
+Lista::Lista(const Lista &old){
+    if(this != &old){
+        cabecera = old.cabecera;
+    }
+}
+
+Lista Lista::operator=(const Lista &old){
+    if(old.cabecera!=0)
+        cabecera = old.cabecera;
+    return (*this);
+}
+
+Lista Lista::operator+(const string &s){
+    Lista nueva(*this);
+    nueva.insertar(s);
+    return nueva;
+}
 
 void Lista::destruir(){
     if(cabecera!=0){

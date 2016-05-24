@@ -45,7 +45,7 @@ void Imagen::crear(int filas, int columnas){
     ncolumnas=columnas;
     datos = new byte[filas*columnas];
     for (int i=0; i<(filas*columnas); i++)
-        datos[i]=0xFF;
+        datos[i]=0x00;
 }
 
 //Constructor de copia
@@ -73,7 +73,7 @@ void Imagen::destruir(){
 }
 
 //Operador de asignacion
-Imagen::Imagen & operator=(const Imagen & aux){
+Imagen & Imagen::operator=(Imagen & aux){
   if(this != &aux){
     destruir();
     nfilas = aux.nfilas;
@@ -86,7 +86,7 @@ Imagen::Imagen & operator=(const Imagen & aux){
 }
 
 //Operador de suma
-Imagen::Imagen operator+(const Imagen& aux){
+Imagen Imagen::operator+(Imagen& aux){
   int c = ncolumnas + aux.ncolumnas;
   int f;
   if(nfilas > aux.nfilas)

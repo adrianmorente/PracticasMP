@@ -7,7 +7,13 @@ LIB = lib
 CXX = g++
 CPPFLAGS = -ansi -pedantic -Wall -Wextra -Wwrite-strings -Werror -g -c -std=c++0x -I$(INC)
 
-all: $(BIN)/arteASCII2 $(BIN)/testimagen $(BIN)/suma
+all: $(BIN) $(OBJ) $(BIN)/arteASCII2 $(BIN)/testimagen $(BIN)/suma
+
+$(BIN):
+	mkdir -p $(BIN)
+
+$(OBJ):
+		mkdir -p $(OBJ)
 
 $(BIN)/suma: $(OBJ)/suma.o $(LIB)/libimagen.a
 	$(CXX) $(OBJ)/suma.o -limagen -o $(BIN)/suma  -L$(LIB)
@@ -20,7 +26,7 @@ $(BIN)/testimagen: $(OBJ)/testimagen.o $(LIB)/libimagen.a
 
 # ************ Creacion de Objetos ************
 
-$(OBJ)/suma.o: $(SRC)/suma.cpp $(INC)/imagen.h 
+$(OBJ)/suma.o: $(SRC)/suma.cpp $(INC)/imagen.h
 	$(CXX) $(CPPFLAGS) $(SRC)/suma.cpp -o $(OBJ)/suma.o
 
 $(OBJ)/arteASCII2.o: $(SRC)/arteASCII2.cpp $(INC)/imagen.h $(INC)/lista.h
@@ -37,14 +43,14 @@ $(OBJ)/pgm.o: $(SRC)/pgm.cpp $(INC)/pgm.h
 
 $(OBJ)/byte.o: $(SRC)/byte.cpp $(INC)/byte.h
 	$(CXX) $(CPPFLAGS) $(SRC)/byte.cpp -o $(OBJ)/byte.o
-	
+
 $(OBJ)/lista.o: $(SRC)/lista.cpp $(INC)/lista.h
 	$(CXX) $(CPPFLAGS) $(SRC)/lista.cpp -o $(OBJ)/lista.o
 
 # ************ Creacion de bibliotecas ************
 $(LIB)/libimagen.a : $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
 	ar rvs $(LIB)/libimagen.a $(OBJ)/imagen.o $(OBJ)/pgm.o $(OBJ)/byte.o $(OBJ)/lista.o
-	
+
 # ************ documentación *******
 
 documentacion:
@@ -54,7 +60,9 @@ documentacion:
 
 clean:
 	echo "Limpiando..."
-	rm $(OBJ)/* $(LIB)/*
-	
+	rm -f $(OBJ)/*.o $(LIB)/*.a
+
 mrproper: clean
-	rm $(BIN)/* doc/html/*
+	rm -f $(BIN)/*
+	rm -f *.pgm
+	rm -f ascii*

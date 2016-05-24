@@ -79,20 +79,17 @@ TipoImagen infoPGM(const char nombre[], int& filas, int& columnas)
 
 // _____________________________________________________________________________
 
-bool leerPGMBinario (const char nombre[], unsigned char **datos, int& filas, int& columnas)
+bool leerPGMBinario (const char nombre[], unsigned char datos[], int& filas, int& columnas)
 {
   bool exito= false;
   filas=0;
   columnas=0;
   ifstream f(nombre);
   
-  if (LeerTipo(f)==IMG_PGM_BINARIO){
-    if (LeerCabecera (f, filas, columnas)){
-		if (f.read(reinterpret_cast<char *>(datos[0]),filas*columnas)){
-			exito= true;
-		}
-	}
-  }
+  if (LeerTipo(f)==IMG_PGM_BINARIO)
+    if (LeerCabecera (f, filas, columnas))
+	if (f.read(reinterpret_cast<char *>(datos),filas*columnas))
+	  exito= true;
   
   f.close();
   return exito;
@@ -102,26 +99,23 @@ bool leerPGMBinario (const char nombre[], unsigned char **datos, int& filas, int
 // Asume que el fichero es correcto y no le faltan datos
 // Aclarar que los espacios y separadores no se leen con >>
 
-bool leerPGMTexto (const char nombre[], unsigned char **datos, int& filas, int& columnas)
+bool leerPGMTexto (const char nombre[], unsigned char datos[], int& filas, int& columnas)
 {
     bool exito= false;
     filas=0;
     columnas=0;
     ifstream f(nombre);
     
-    if (LeerTipo(f)==IMG_PGM_TEXTO){
+    if (LeerTipo(f)==IMG_PGM_TEXTO)
         if (LeerCabecera (f, filas, columnas))  {
-            for (int i=0; i<filas; i++){
-				for (int j = 0; j < columnas; j++){
-					int aux = 0;
-					f >> aux; //leer un numero en lugar de un unico caracter
-					if ((aux < 256)&&(aux >= 0)){
-						datos[i][j] = aux;
-					}
+            for (int i=0; i<filas*columnas;i++){
+				int aux = 0;
+				f >> aux; //leer un numero en lugar de un unico caracter
+				if ((aux < 256)&&(aux >= 0)){
+					datos[i] = aux;
 				}
 			}
             exito = true;
-		}
     }
     f.close();
     return exito;
@@ -132,7 +126,7 @@ bool leerPGMTexto (const char nombre[], unsigned char **datos, int& filas, int& 
 
 // _____________________________________________________________________________
 
-bool escribirPGMBinario (const char nombre[], const unsigned char * const *datos, int filas, int columnas)
+bool escribirPGMBinario (const char nombre[], const unsigned char datos[], int filas, int columnas)
 {
   ofstream f(nombre);
   bool res= true;
@@ -141,14 +135,14 @@ bool escribirPGMBinario (const char nombre[], const unsigned char * const *datos
     f << "P5" << endl;
     f << columnas << ' ' << filas << endl;
     f << 255 << endl;
-    f.write(reinterpret_cast<const char *>(datos[0]),filas*columnas);
+    f.write(reinterpret_cast<const char *>(datos),filas*columnas);
     if (!f) res=false;
   }
   f.close();
   return res;
 }
 
-bool escribirPGMTexto (const char nombre[], const unsigned char * const *datos, int filas, int columnas)
+bool escribirPGMTexto (const char nombre[], const unsigned char datos[], int filas, int columnas)
 {
     ofstream f(nombre);
     bool res= true;
@@ -157,13 +151,11 @@ bool escribirPGMTexto (const char nombre[], const unsigned char * const *datos, 
         f << "P2" << endl;
         f << columnas << ' ' << filas << endl;
         f << 255 << endl;
-        for (int i=0; i<filas; i++){
-			for(int j = 0; j < columnas;j++){
-				f << (int)datos[i][j] << ' ';
-				if((j+1)%19==0){      //para ser mas visible
+        for (int i=0; i<filas*columnas;i++){
+            f << (int)datos[i] << ' ';
+            if((i+1)%19==0){      //para ser mas visible
                     f << endl;
-				}
-			}
+            }
 		}
         res = true;
     }
