@@ -45,7 +45,7 @@ void Imagen::crear(int filas, int columnas){
     ncolumnas=columnas;
     datos = new byte[filas*columnas];
     for (int i=0; i<(filas*columnas); i++)
-        datos[i]=0xFF;
+        datos[i]=0x00;
 }
 
 //Constructor de copia
