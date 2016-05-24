@@ -170,7 +170,7 @@ del vector.
 */
 void Imagen::set(int y, int x, byte v){
     if(y<=nfilas && x<=ncolumnas)
-        datos[y*ncolumnas+x] = v;
+        datos[y][x] = v;
 }
 
 
@@ -185,7 +185,7 @@ del vector.
 */
 byte Imagen::get(int y, int x){
   if((y<nfilas) && (x<ncolumnas) && (y>=0) && (x>=0))
-    return datos[y*ncolumnas+x];
+    return datos[y][x];
   else
     return -1;
 }
