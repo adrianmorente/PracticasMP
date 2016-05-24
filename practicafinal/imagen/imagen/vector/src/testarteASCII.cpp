@@ -33,6 +33,4 @@ int main(){
         cout << "La conversion no ha sido posible" << endl;
 
     return 0;
-
-    origen.destruir();
 }
