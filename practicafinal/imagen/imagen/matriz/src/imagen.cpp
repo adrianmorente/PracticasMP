@@ -43,18 +43,28 @@ void Imagen::crear(int filas, int columnas){
     }
     nfilas=filas;
     ncolumnas=columnas;
-    datos = new byte[filas*columnas];
-    for (int i=0; i<(filas*columnas); i++)
-        datos[i]=0x00;
+    datos = new byte*[nfilas];
+    datos[0] = new byte[nfilas*ncolumnas];
+    for(int i=0; i<nfilas; i++)
+        datos[i] = datos[i-1]+ncolumnas;
+    for(int i=0; i<nfilas; i++){
+        for(int j=0; i<ncolumnas; j++)
+            datos[i][j] = 0;
+    }
 }
 
 //Constructor de copia
 Imagen::Imagen(const Imagen & aux){
-  nfilas=aux.nfilas;
-  ncolumnas = aux.ncolumnas;
-  datos = new byte(nfilas*ncolumnas);
-  for (int i = 0; i < nfilas*ncolumnas; i++)
-    datos[i]=aux.datos[i];
+    nfilas=aux.nfilas;
+    ncolumnas = aux.ncolumnas;
+    datos = new byte*[nfilas];
+    datos[0] = new byte[nfilas*ncolumnas];
+    for(int i=0; i<nfilas; i++)
+        datos[i] = datos[i-1]+ncolumnas;
+    for(int i=0; i<nfilas; i++){
+        for(int j=0; j<ncolumnas; j++)
+            datos[i][j] = aux.get(i,j);
+    }
 }
 
 //Destructor
@@ -68,6 +78,7 @@ Imagen::~Imagen(){
 void Imagen::destruir(){
     nfilas=ncolumnas=0;
     if (datos!=0)
+        delete [] datos[0];
         delete [] datos;
     datos=0;
 }
