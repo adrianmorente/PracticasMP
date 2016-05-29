@@ -213,7 +213,10 @@ corresponde con la posición @c y * @c ncolumnas + @c x de la imagen donde @c y 
 fila y @c x representa la columna.
 */
 byte Imagen::getPos(int i){
+  if((i < nfilas*ncolumnas)&&(i >=0))
     return datos[i];
+  else
+    return -1;
 }
 
 
