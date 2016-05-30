@@ -201,7 +201,7 @@ fila y @c x representa la columna.
 */
 void Imagen::setPos(int i, byte v){
   if((i< nfilas*ncolumnas) && (i>=0))
-    datos[i] = v;
+    datos[0][i] = v;
 }
 
 
@@ -214,7 +214,7 @@ fila y @c x representa la columna.
 */
 byte Imagen::getPos(int i){
   if((i < nfilas*ncolumnas)&&(i >=0))
-    return datos[i];
+    return datos[0][i];
   else
     return -1;
 }
