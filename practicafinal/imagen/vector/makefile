@@ -7,13 +7,16 @@ LIB = lib
 CXX = g++
 CPPFLAGS = -ansi -pedantic -Wall -Wextra -Wwrite-strings -Werror -g -c -std=c++0x -I$(INC)
 
-all: $(BIN) $(OBJ) $(BIN)/arteASCII2 $(BIN)/testimagen $(BIN)/suma
+all: $(BIN) $(OBJ) $(LIB) $(BIN)/arteASCII2 $(BIN)/testimagen $(BIN)/suma
 
 $(BIN):
 	mkdir -p $(BIN)
 
 $(OBJ):
 		mkdir -p $(OBJ)
+
+$(LIB):
+		mkdir -p $(LIB)
 
 $(BIN)/suma: $(OBJ)/suma.o $(LIB)/libimagen.a
 	$(CXX) $(OBJ)/suma.o -limagen -o $(BIN)/suma  -L$(LIB)

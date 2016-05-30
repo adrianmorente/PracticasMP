@@ -59,11 +59,11 @@ Imagen::Imagen(const Imagen & aux){
     ncolumnas = aux.ncolumnas;
     datos = new byte*[nfilas];
     datos[0] = new byte[nfilas*ncolumnas];
-    for(int i=0; i<nfilas; i++)
+    for(int i=1; i<nfilas; i++)
         datos[i] = datos[i-1]+ncolumnas;
     for(int i=0; i<nfilas; i++){
         for(int j=0; j<ncolumnas; j++)
-            datos[i][j] = aux.get(i,j);
+            datos[i][j] = aux.datos[i][j];
     }
 }
 
