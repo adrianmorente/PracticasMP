@@ -25,8 +25,14 @@ Lista::Lista(const Lista &old){
 }
 
 Lista Lista::operator=(const Lista &old){
-    if(old.cabecera!=0)
-        cabecera = old.cabecera;
+    if(this!=&old){
+        destruir();
+        Celda *aux = old.cabecera;
+        while(aux!=0){
+            insertar(aux->datos);
+            aux=aux->siguiente;
+        }
+    }
     return (*this);
 }
 

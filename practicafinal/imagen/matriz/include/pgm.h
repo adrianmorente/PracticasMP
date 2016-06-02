@@ -65,8 +65,8 @@ bool leerPGMTexto (const char nombre[], unsigned char **datos, int& filas, int& 
   * @retval true 	si ha tenido éxito en la escritura.
   * @retval false 	si se ha producido algún error en la escritura.
   */
-bool escribirPGMBinario (const char nombre[], const unsigned char **datos, int filas, int columnas);
+bool escribirPGMBinario (const char nombre[], unsigned char **datos, int filas, int columnas);
 
-bool escribirPGMTexto (const char nombre[], const unsigned char **datos, int filas, int columnas);
+bool escribirPGMTexto (const char nombre[], unsigned char **datos, int filas, int columnas);
 
 #endif

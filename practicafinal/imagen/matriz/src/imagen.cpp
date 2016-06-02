@@ -38,18 +38,19 @@ Dimensiona la imagen a tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
 void Imagen::crear(int filas, int columnas){
-    if (datos!=0){
+    if (datos!=0)
         destruir();
-    }
+
     nfilas=filas;
     ncolumnas=columnas;
     datos = new byte*[nfilas];
     datos[0] = new byte[nfilas*ncolumnas];
-    for(int i=0; i<nfilas; i++)
+    for(int i=1; i<nfilas; i++)
         datos[i] = datos[i-1]+ncolumnas;
     for(int i=0; i<nfilas; i++){
-        for(int j=0; i<ncolumnas; j++)
+        for(int j=0; i<ncolumnas; j++){
             datos[i][j] = 0;
+        }
     }
 }
 
