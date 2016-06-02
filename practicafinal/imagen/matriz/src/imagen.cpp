@@ -186,10 +186,7 @@ como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c nc
 del vector.
 */
 byte Imagen::get(int y, int x){
-  if((y<nfilas) && (x<ncolumnas) && (y>=0) && (x>=0))
     return datos[y][x];
-  else
-    return -1;
 }
 
 
@@ -234,13 +231,11 @@ bool Imagen::leerImagen(const char nombreFichero[]){
     bool res = false;
     TipoImagen tipo = infoPGM(nombreFichero, fils, cols);
     if(tipo == IMG_PGM_BINARIO){
-        destruir();
         crear(fils, cols);
         if(fils*cols <= nfilas*ncolumnas)
-              res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
+          res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
     }
     else if(tipo == IMG_PGM_TEXTO){
-        destruir();
         crear(fils,cols);
         if(fils*cols <= nfilas*ncolumnas)
               res = leerPGMTexto(nombreFichero, datos, nfilas, ncolumnas);

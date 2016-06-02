@@ -88,7 +88,7 @@ bool leerPGMBinario (const char nombre[], unsigned char **datos, int& filas, int
 
   if (LeerTipo(f)==IMG_PGM_BINARIO)
     if (LeerCabecera (f, filas, columnas))
-	if (f.read(reinterpret_cast<char *>(datos),filas*columnas))
+	if (f.read(reinterpret_cast<char *>(datos[0]),filas*columnas))
 	  exito= true;
 
   f.close();
@@ -137,7 +137,7 @@ bool escribirPGMBinario (const char nombre[], unsigned char **datos, int filas, 
     f << "P5" << endl;
     f << columnas << ' ' << filas << endl;
     f << 255 << endl;
-    f.write(reinterpret_cast<const char *>(datos),filas*columnas);
+    f.write(reinterpret_cast<const char *>(datos[0]),filas*columnas);
     if (!f) res=false;
   }
   f.close();
