@@ -30,8 +30,8 @@ public:
    Imagen();
    Imagen(const Imagen &aux);
    ~Imagen();
-   Imagen operator+(Imagen &aux);
-   Imagen & operator=(Imagen &aux);
+   Imagen operator+(const Imagen &aux);
+   Imagen & operator=(const Imagen &aux);
 
 
 /**
@@ -99,7 +99,7 @@ Devuelve el valor de la posición (@a x,@a y) de la imagen. Dado que la imagen s
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
 */
-   byte get(int y, int x);
+   byte get(int y, int x)const;
 
 
 /**
@@ -122,7 +122,7 @@ Devuelve el valor de la posición @a i de la imagen considerada como vector. La 
 corresponde con la posición @c y * @c ncolumnas + @c x de la imagen donde @c y representa la
 fila y @c x representa la columna.
 */
-   byte getPos(int i);
+   byte getPos(int i)const;
 
 
 /**

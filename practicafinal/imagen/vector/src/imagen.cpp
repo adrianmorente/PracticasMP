@@ -73,7 +73,7 @@ void Imagen::destruir(){
 }
 
 //Operador de asignacion
-Imagen & Imagen::operator=(Imagen & aux){
+Imagen & Imagen::operator=(const Imagen & aux){
   if(this != &aux){
     destruir();
     nfilas = aux.nfilas;
@@ -86,7 +86,7 @@ Imagen & Imagen::operator=(Imagen & aux){
 }
 
 //Operador de suma
-Imagen Imagen::operator+(Imagen& aux){
+Imagen Imagen::operator+(const Imagen& aux){
   int c = ncolumnas + aux.ncolumnas;
   int f;
   if(nfilas > aux.nfilas)
@@ -172,7 +172,7 @@ Devuelve el valor de la posición (@a x,@a y) de la imagen. Dado que la imagen s
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
 */
-byte Imagen::get(int y, int x){
+byte Imagen::get(int y, int x) const{
   if((y<nfilas) && (x<ncolumnas) && (y>=0) && (x>=0))
     return datos[y*ncolumnas+x];
   else
@@ -201,7 +201,7 @@ Devuelve el valor de la posición @a i de la imagen considerada como vector. La 
 corresponde con la posición @c y * @c ncolumnas + @c x de la imagen donde @c y representa la
 fila y @c x representa la columna.
 */
-byte Imagen::getPos(int i){
+byte Imagen::getPos(int i) const{
     return datos[i];
 }
 
@@ -218,7 +218,7 @@ bool Imagen::leerImagen(const char nombreFichero[]){
     bool res = false;
     TipoImagen tipo = infoPGM(nombreFichero, fils, cols);
     if(tipo == IMG_PGM_BINARIO){
-        destruir();
+        //destruir();
         crear(fils, cols);
         if(fils*cols <= nfilas*ncolumnas)
               res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
