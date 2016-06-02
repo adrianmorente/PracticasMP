@@ -79,7 +79,7 @@ TipoImagen infoPGM(const char nombre[], int& filas, int& columnas)
 
 // _____________________________________________________________________________
 
-bool leerPGMBinario (const char nombre[], unsigned char datos[][50000], int& filas, int& columnas)
+bool leerPGMBinario (const char nombre[], unsigned char **datos, int& filas, int& columnas)
 {
   bool exito= false;
   filas=0;
@@ -88,7 +88,7 @@ bool leerPGMBinario (const char nombre[], unsigned char datos[][50000], int& fil
 
   if (LeerTipo(f)==IMG_PGM_BINARIO)
     if (LeerCabecera (f, filas, columnas))
-	if (f.read(reinterpret_cast<char **>(datos),filas,columnas))
+	if (f.read(reinterpret_cast<char **>(datos),filas*columnas))
 	  exito= true;
 
   f.close();
@@ -99,7 +99,7 @@ bool leerPGMBinario (const char nombre[], unsigned char datos[][50000], int& fil
 // Asume que el fichero es correcto y no le faltan datos
 // Aclarar que los espacios y separadores no se leen con >>
 
-bool leerPGMTexto (const char nombre[], unsigned char datos[][50000], int& filas, int& columnas)
+bool leerPGMTexto (const char nombre[], unsigned char **datos, int& filas, int& columnas)
 {
     bool exito= false;
     filas=0;
@@ -128,7 +128,7 @@ bool leerPGMTexto (const char nombre[], unsigned char datos[][50000], int& filas
 
 // _____________________________________________________________________________
 
-bool escribirPGMBinario (const char nombre[], const unsigned char datos[][50000], int filas, int columnas)
+bool escribirPGMBinario (const char nombre[], const unsigned char **datos, int filas, int columnas)
 {
   ofstream f(nombre);
   bool res= true;
@@ -137,14 +137,14 @@ bool escribirPGMBinario (const char nombre[], const unsigned char datos[][50000]
     f << "P5" << endl;
     f << columnas << ' ' << filas << endl;
     f << 255 << endl;
-    f.write(reinterpret_cast<const char **>(datos),filas,columnas);
+    f.write(reinterpret_cast<const char **>(datos),filas*columnas);
     if (!f) res=false;
   }
   f.close();
   return res;
 }
 
-bool escribirPGMTexto (const char nombre[], const unsigned char datos[][50000], int filas, int columnas)
+bool escribirPGMTexto (const char nombre[], const unsigned char **datos, int filas, int columnas)
 {
     ofstream f(nombre);
     bool res= true;

@@ -50,9 +50,9 @@ TipoImagen infoPGM(const char nombre[], int& filas, int& columnas);
   * @pre datos 		debe tener tamaño suficiente para almacenar
   *      @a filas x @a columnas bytes de datos de la imagen.
   */
-bool leerPGMBinario (const char nombre[], unsigned char datos[][50000], int& filas, int& columnas);
+bool leerPGMBinario (const char nombre[], unsigned char **datos, int& filas, int& columnas);
 
-bool leerPGMTexto (const char nombre[], unsigned char datos[][50000], int& filas, int& columnas);
+bool leerPGMTexto (const char nombre[], unsigned char **datos, int& filas, int& columnas);
 
 /**
   * @brief Escribe una imagen de tipo PGM binario
@@ -65,8 +65,8 @@ bool leerPGMTexto (const char nombre[], unsigned char datos[][50000], int& filas
   * @retval true 	si ha tenido éxito en la escritura.
   * @retval false 	si se ha producido algún error en la escritura.
   */
-bool escribirPGMBinario (const char nombre[], const unsigned char datos[][50000], int filas, int columnas);
+bool escribirPGMBinario (const char nombre[], const unsigned char **datos, int filas, int columnas);
 
-bool escribirPGMTexto (const char nombre[], const unsigned char datos[][50000], int filas, int columnas);
+bool escribirPGMTexto (const char nombre[], const unsigned char **datos, int filas, int columnas);
 
 #endif
