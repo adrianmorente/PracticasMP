@@ -6,20 +6,21 @@ using namespace std;
 
 int main(){
     Imagen A,B,C;
-	
+
 	// Leer la imagen lena.pgm (formato texto)
 	if (!A.leerImagen("imagenes/lena.pgm")){
 		cerr << "error leyendo imagenes/lena.pgm\n";
 		return 1;
 	}
-	
+
 	// Leer la imagen gato.pgm (formato texto)
 	if (!B.leerImagen("imagenes/gato.pgm")){
 		cerr << "error leyendo imagenes/gato.pgm\n";
 		return 1;
 	}
-	
+
 	C = A + B;
+    
 	// Guardar la imagen destino en el fichero trozo.pgm (formato texto)
 	if (C.escribirImagen("composicionAB.pgm", false)){
 		// si todo va bien
@@ -41,6 +42,6 @@ int main(){
 		cerr << "Error guardando la imagen composicionDC.pgm\n";
 		return 1;
 	}
-		
+
 	return 0;
 }

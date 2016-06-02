@@ -86,20 +86,21 @@ void Imagen::destruir(){
 }
 
 //Operador de asignacion
-Imagen & Imagen::operator=(Imagen & aux){
-  if(this != &aux){
-    destruir();
-    nfilas = aux.nfilas;
-    ncolumnas = aux.ncolumnas;
-    crear(nfilas,ncolumnas);
-    for(int i=0; i<(nfilas*ncolumnas); i++)
-      datos[i] = aux.datos[i];
-  }
-  return(*this);
+Imagen & Imagen::operator=(const Imagen & aux){
+    if(this != &aux){
+        nfilas = aux.nfilas;
+        ncolumnas = aux.ncolumnas;
+        crear(nfilas, ncolumnas);
+        for(int i=0; i<nfilas; i++){
+            for(int j=0; j<ncolumnas; j++)
+                set(i,j, aux.get(i,j));
+        }
+    }
+    return (*this);
 }
 
 //Operador de suma
-Imagen Imagen::operator+(Imagen& aux){
+Imagen Imagen::operator+(const Imagen& aux){
   int c = ncolumnas + aux.ncolumnas;
   int f;
   if(nfilas > aux.nfilas)
@@ -185,7 +186,7 @@ Devuelve el valor de la posición (@a x,@a y) de la imagen. Dado que la imagen s
 como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c ncolumnas + @a x
 del vector.
 */
-byte Imagen::get(int y, int x){
+byte Imagen::get(int y, int x) const{
     return datos[y][x];
 }
 
@@ -211,7 +212,7 @@ Devuelve el valor de la posición @a i de la imagen considerada como vector. La 
 corresponde con la posición @c y * @c ncolumnas + @c x de la imagen donde @c y representa la
 fila y @c x representa la columna.
 */
-byte Imagen::getPos(int i){
+byte Imagen::getPos(int i) const{
   if((i < nfilas*ncolumnas)&&(i >=0))
     return datos[0][i];
   else

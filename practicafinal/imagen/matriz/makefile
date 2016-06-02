@@ -7,7 +7,7 @@ LIB = lib
 CXX = g++
 CPPFLAGS = -ansi -pedantic -Wall -Wextra -Wwrite-strings -Werror -g -c -std=c++0x -I$(INC)
 
-all: $(BIN) $(OBJ) $(LIB) $(BIN)/arteASCII2 $(BIN)/testimagen $(BIN)/suma
+all: $(BIN) $(OBJ) $(LIB) $(BIN)/arteASCII2 $(BIN)/testimagen $(BIN)/suma $(BIN)/testFinal
 
 $(BIN):
 	mkdir -p $(BIN)
@@ -28,7 +28,14 @@ $(BIN)/arteASCII2: $(OBJ)/arteASCII2.o $(LIB)/libimagen.a
 $(BIN)/testimagen: $(OBJ)/testimagen.o $(LIB)/libimagen.a
 	$(CXX) $(OBJ)/testimagen.o -limagen -o $(BIN)/testimagen  -L$(LIB)
 
+$(BIN)/testFinal: $(OBJ)/testFinal.o $(LIB)/libimagen.a
+	$(CXX) $(OBJ)/testFinal.o -limagen -o $(BIN)/testFinal  -L$(LIB)
+
+
 # ************ Creacion de Objetos ************
+
+$(OBJ)/testFinal.o: $(SRC)/testFinal.cpp $(INC)/imagen.h
+	$(CXX) $(CPPFLAGS) $(SRC)/testFinal.cpp -o $(OBJ)/testFinal.o
 
 $(OBJ)/suma.o: $(SRC)/suma.cpp $(INC)/imagen.h
 	$(CXX) $(CPPFLAGS) $(SRC)/suma.cpp -o $(OBJ)/suma.o
