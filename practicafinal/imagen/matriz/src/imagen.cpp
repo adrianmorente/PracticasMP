@@ -48,7 +48,7 @@ void Imagen::crear(int filas, int columnas){
     for(int i=1; i<nfilas; i++)
         datos[i] = datos[i-1]+ncolumnas;
     for(int i=0; i<nfilas; i++){
-        for(int j=0; i<ncolumnas; j++){
+        for(int j=0; j<ncolumnas; j++){
             datos[i][j] = 0;
         }
     }
