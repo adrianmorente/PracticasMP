@@ -240,6 +240,7 @@ bool Imagen::leerImagen(const char nombreFichero[]){
               res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
     }
     else if(tipo == IMG_PGM_TEXTO){
+        destruir();
         crear(fils,cols);
         if(fils*cols <= nfilas*ncolumnas)
               res = leerPGMTexto(nombreFichero, datos, nfilas, ncolumnas);
