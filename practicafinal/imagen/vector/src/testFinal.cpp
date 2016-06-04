@@ -14,13 +14,13 @@ int main(){
 	}
 
 	// Leer la imagen gato.pgm (formato texto)
-	if (!B.leerImagen("imagenes/gato.pgm")){
-		cerr << "error leyendo imagenes/gato.pgm\n";
+	if (!B.leerImagen("imagenes/gio.pgm")){
+		cerr << "error leyendo imagenes/gio.pgm\n";
 		return 1;
 	}
 
 	C = A + B;
-    
+
 	// Guardar la imagen destino en el fichero trozo.pgm (formato texto)
 	if (C.escribirImagen("composicionAB.pgm", false)){
 		// si todo va bien
@@ -33,7 +33,6 @@ int main(){
 	// Sobrecargas, destructor y constructor de copia
 	Imagen D(A);	// Constructor de copia
 	D = C + D;		// Sobrecarga del operador suma y asignacion
-
 	// Guardar la imagen suma.pgm (formato texto)
 	if(D.escribirImagen("composicionDC.pgm",false)){
 		// si todo va bien
@@ -42,6 +41,5 @@ int main(){
 		cerr << "Error guardando la imagen composicionDC.pgm\n";
 		return 1;
 	}
-
 	return 0;
 }

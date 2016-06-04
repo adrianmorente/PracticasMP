@@ -38,23 +38,20 @@ Dimensiona la imagen a tamaño @a filas x @a columnas y pone todos
 sus elementos a 0.
 */
 void Imagen::crear(int filas, int columnas){
-    if (datos!=0){
-        destruir();
-    }
     nfilas=filas;
     ncolumnas=columnas;
     datos = new byte[filas*columnas];
     for (int i=0; i<(filas*columnas); i++)
-        datos[i]=0x00;
+        datos[i]=0x0;
 }
 
 //Constructor de copia
 Imagen::Imagen(const Imagen & aux){
-  nfilas=aux.nfilas;
-  ncolumnas = aux.ncolumnas;
-  datos = new byte(nfilas*ncolumnas);
-  for (int i = 0; i < nfilas*ncolumnas; i++)
-    datos[i]=aux.datos[i];
+    nfilas=aux.nfilas;
+    ncolumnas = aux.ncolumnas;
+    datos = new byte[nfilas*ncolumnas];
+    for (int i=0; i<(nfilas*ncolumnas); i++)
+        datos[i]=aux.datos[i];
 }
 
 //Destructor
@@ -75,12 +72,12 @@ void Imagen::destruir(){
 //Operador de asignacion
 Imagen & Imagen::operator=(const Imagen & aux){
   if(this != &aux){
-    destruir();
     nfilas = aux.nfilas;
     ncolumnas = aux.ncolumnas;
     crear(nfilas,ncolumnas);
-    for(int i=0; i<(nfilas*ncolumnas); i++)
+    for(int i=0; i<(nfilas*ncolumnas); i++){
       datos[i] = aux.datos[i];
+    }
   }
   return(*this);
 }
@@ -126,6 +123,7 @@ Imagen Imagen::operator+(const Imagen& aux){
       salida.set(i,j,0);
     }
   }
+
   return salida;
 }
 
@@ -173,10 +171,7 @@ como un vector, la posición (@a x,@a y) corresponde a la posición @a y * @c nc
 del vector.
 */
 byte Imagen::get(int y, int x) const{
-  if((y<nfilas) && (x<ncolumnas) && (y>=0) && (x>=0))
     return datos[y*ncolumnas+x];
-  else
-    return -1;
 }
 
 
@@ -218,7 +213,6 @@ bool Imagen::leerImagen(const char nombreFichero[]){
     bool res = false;
     TipoImagen tipo = infoPGM(nombreFichero, fils, cols);
     if(tipo == IMG_PGM_BINARIO){
-        //destruir();
         crear(fils, cols);
         if(fils*cols <= nfilas*ncolumnas)
               res = leerPGMBinario(nombreFichero, datos, nfilas, ncolumnas);
