@@ -41,6 +41,5 @@ int main(){
 		cerr << "Error guardando la imagen trozo.pgm\n";
 		return 1;
 	}
-
 	return 0;
 }

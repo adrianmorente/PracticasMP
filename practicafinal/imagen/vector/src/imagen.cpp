@@ -40,6 +40,7 @@ sus elementos a 0.
 void Imagen::crear(int filas, int columnas){
     nfilas=filas;
     ncolumnas=columnas;
+    delete [] datos;
     datos = new byte[filas*columnas];
     for (int i=0; i<(filas*columnas); i++)
         datos[i]=0x0;
@@ -52,6 +53,7 @@ Imagen::Imagen(const Imagen & aux){
     datos = new byte[nfilas*ncolumnas];
     for (int i=0; i<(nfilas*ncolumnas); i++)
         datos[i]=aux.datos[i];
+
 }
 
 //Destructor
@@ -74,6 +76,7 @@ Imagen & Imagen::operator=(const Imagen & aux){
   if(this != &aux){
     nfilas = aux.nfilas;
     ncolumnas = aux.ncolumnas;
+    delete [] datos;
     crear(nfilas,ncolumnas);
     for(int i=0; i<(nfilas*ncolumnas); i++){
       datos[i] = aux.datos[i];
@@ -113,17 +116,14 @@ Imagen Imagen::operator+(const Imagen& aux){
   if (nfilas>aux.nfilas){
     inicol=ncolumnas;
     fincol=c;
-  }
-  else{
+  }else{
     inicol=0;
     fincol=ncolumnas;
   }
   for(int i=inifilas; i<f; i++){
-    for(int j=inicol; j<fincol; j++){
+    for(int j=inicol; j<fincol; j++)
       salida.set(i,j,0);
-    }
   }
-
   return salida;
 }
 
